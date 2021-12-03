@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <sstream>
 #include <cmath>
@@ -6,6 +7,7 @@
 
 int main()
 {
+
 	ActionType ActType;
 	//Create an object of ApplicationManager
 	ApplicationManager AppManager;
@@ -26,3 +28,4 @@ int main()
 		
 	return 0;
 }
+

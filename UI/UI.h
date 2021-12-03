@@ -9,7 +9,7 @@ using namespace std;
 
 struct Point
 {
-	int x,y;
+	int x, y;
 };
 
 
@@ -39,16 +39,16 @@ class UI
 		//Note: Items are ordered here as they appear in the menu
 		//If you want to change the menu items order, just change the order here
 		ITM_RES,		//Resistor item in menu
-		ITM_WIRE,       //Wire item in menu
 		ITM_SWITCH,      //Switch item in menu
 		ITM_LAMP,        //Lamp item in menu
 		ITM_GROUND,      //Ground item in menu
 		ITM_BATTERY,    //Battery item in menu
+		ITM_WIRE,       //Wire item in menu
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
-	
+
 		ITM_DSN_CNT		//no. of design menu items ==> This should be the last line in this enum
-	
+
 	};
 
 
@@ -56,26 +56,26 @@ class UI
 	{
 		//Note: Items are ordered here as they appear in menu
 		ITM_CIRC_SIM,	//Circuit Simulate menu item
-	
+
 		//TODO:Add more items names here
-	
+
 		ITM_SIM_CNT		//no. of simulation menu items ==> This should be the last line in this enum
-	
+
 	};
 
 
 
 	MODE AppMode;		//Application Mode (design or simulation)
-	
-	static const int	width = 1200, height = 650,	//Window width and height
-						wx = 15 , wy = 15,			//Window starting coordinates
-						StatusBarHeight = 50,	//Status Bar Height
-						ToolBarHeight = 80,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
-						ToolItemWidth = 80,		//Width of each item in toolbar menu
 
-						//Arbitrary values, you can change as you wish
-						COMP_WIDTH = 100,		//Component Image width
-						COMP_HEIGHT = 20;		//Component Image height
+	static const int	width = 1200, height = 650,	//Window width and height
+		wx = 15, wy = 15,			//Window starting coordinates
+		StatusBarHeight = 50,	//Status Bar Height
+		ToolBarHeight = 80,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
+		ToolItemWidth = 80,		//Width of each item in toolbar menu
+
+		//Arbitrary values, you can change as you wish
+		COMP_WIDTH = 100,		//Component Image width
+		COMP_HEIGHT = 30;		//Component Image height
 
 	color DrawColor;		//Drawing color
 	color SelectColor;		//Highlighting color
@@ -85,22 +85,22 @@ class UI
 
 
 
-	window *pWind;
-	
+	window* pWind;
+
 public:
-	
+
 	UI();
 	int getCompWidth() const;	//returns Component width
 	int getCompHeight() const;	//returns Component height
-	
-	
+
+
 	// Input Functions  ---------------------------
-	void GetPointClicked(int &, int &);	//Get coordinate where user clicks
+	void GetPointClicked(int&, int&);	//Get coordinate where user clicks
 	string GetSrting();		//Returns a string entered by the user
 
 	ActionType GetUserAction() const; //Reads the user click and maps it to an action
 
-	
+
 	// Output Functions  ---------------------------
 	void ChangeTitle(string Title) const;
 
@@ -111,15 +111,23 @@ public:
 	void ClearStatusBar() const;		//Clears the status bar
 	void ClearDrawingArea() const;	//Clears the drawing area
 
-		
+
 	// Draws a resistor
-	void DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
+	void DrawResistor(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
 
 	///TODO: Make similar functions for drawing all other components, connections, .. etc
+	
+	// Draws a battery
+	void DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
+	void DrawBulb(const GraphicsInfo& bu_GfxInfo, bool selected = false) const;
+	void DrawGround(const GraphicsInfo& g_GfxInfo, bool selected = false) const;
+	void DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected = false) const;
+
+
 
 	// Draws Connection
-	void DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
-	
+	void DrawConnection(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+
 	void PrintMsg(string msg) const;	//Print a message on Status bar
 
 	~UI();
