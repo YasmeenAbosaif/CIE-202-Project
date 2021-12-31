@@ -105,10 +105,9 @@ ActionType UI::GetUserAction() const
 			case ITM_BUZZER: return   ADD_BUZZER;
 			case ITM_FUSE:   return     ADD_FUSE;
 			case ITM_SAVE:   return         SAVE;
-
-
-
-
+			case ITM_SIM_Switch: return SIM_MODE;
+			case ITM_Label:	return ADD_Label;
+			case ITM_Edit: return EDIT_Label;
 			case ITM_EXIT:	return EXIT;
 
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
@@ -126,7 +125,26 @@ ActionType UI::GetUserAction() const
 	}
 	else	//Application is in Simulation mode
 	{
-		return SIM_MODE;	//This should be changed after creating the compelete simulation bar 
+		//[1] If user clicks on the Toolbar
+		if (y >= 0 && y < ToolBarHeight)
+		{
+			//Check whick Menu item was clicked
+			//==> This assumes that menu items are lined up horizontally <==
+			int ClickedItemOrder = (x / ToolItemWidth);
+			//Divide x coord of the point clicked by the menu item width (int division)
+			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+
+			switch (ClickedItemOrder)
+			{
+			case ITM_CIRC_SIM:return SIMULATE;
+			case ITM_DESIGN_MODE: return DSN_MODE;
+			case AMMETER:return AMMETER_;
+			case VOLTMETER:return VOLTMETER_;
+
+			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
+			}
+		}
+
 	}
 
 }
@@ -201,9 +219,9 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_BUZZER] = "images\\Menu\\Menu_Buzzer.jpg";
 	MenuItemImages[ITM_FUSE] = "images\\Menu\\Menu_Fuse.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\Menu\\Menu_Save.jpg";
-
-
-
+	MenuItemImages[ITM_SIM_Switch] = "images\\Menu\\Menu_SIM_Switch.jpg";
+	MenuItemImages[ITM_Label] = "images\\Menu\\Menu_Label.jpg";
+	MenuItemImages[ITM_Edit] = "images\\Menu\\Menu_Edit.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -216,16 +234,6 @@ void UI::CreateDesignToolBar()
 	//Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);
-
-}
-//////////////////////////////////////////////////////////////////////////////////////////
-//Draws the menu (toolbar) in the simulation mode
-void UI::CreateSimulationToolBar()
-{
-	AppMode = SIMULATION;	//Simulation Mode
-
-	//TODO: Write code to draw the simualtion toolbar (similar to that of design toolbar drawing)
-
 
 }
 
@@ -339,12 +347,79 @@ void UI::DrawFuse(const GraphicsInfo& f_GfxInfo, bool selected) const
 	pWind->DrawImage(FuseImage, f_GfxInfo.PointsList[0].x, f_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
+void UI::Clear_Tool_Bar()const
+{
+	// Set the Message offset from the Status Bar
+	int MsgX = 25;
+	int MsgY = StatusBarHeight - 10;
+
+	//Overwrite using bachground color to erase the message
+	pWind->SetPen(BkGrndColor);
+	pWind->SetBrush(BkGrndColor);
+	pWind->DrawRectangle(0, 0, width, ToolBarHeight);
+}
+
+//===================================== For changing to simulation mode ==============================
+//Draws the menu (toolbar) in the simulation mode
+
+void UI::CreateSimulationToolBar()
+{
+	this->Clear_Tool_Bar();
+	string MenuItemImages[ITM_SIM_CNT];
+	MenuItemImages[ITM_CIRC_SIM] = "Images\\Menu\\Menu_Simulate.jpg";
+	MenuItemImages[AMMETER] = "Images\\Menu\\Menu_Ammeter.jpg";
+	MenuItemImages[VOLTMETER] = "Images\\Menu\\Menu_Voltmeter.jpg";
+	MenuItemImages[ITM_DESIGN_MODE] = "Images\\Menu\\Menu_DesignMode.jpg";
+
+	//Draw menu item one image at a time
+	for (int i = 0; i < ITM_SIM_CNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * ToolItemWidth, 0, ToolItemWidth, ToolBarHeight);
+
+}
+//////////////////////////////////////   SIMULATION KEY //////////////////////////////////////////////////
+void UI::SIM_MODE_Button()
+{
+	AppMode = SIMULATION;	//Simulation Mode 
+	CreateSimulationToolBar();	//Create the desgin toolbar
+}
+
+// ===================================== End of simulation mode ========================================//
+
+// Drawing connections ================================================================================= //
 
 void UI::DrawConnection(const GraphicsInfo& r_GfxInfo, bool selected) const
 {
 	//TODO: Add code to draw connection
 }
 
+
+//================================== For labeling & Editing the components names====================================
+
+void UI::Label_name(string name, int x, int y)
+{
+	int MsgX = x;
+	int MsgY = y;
+	pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial");
+	pWind->SetPen(MsgColor);
+	pWind->DrawString(MsgX - 40, MsgY - 40, name);
+}
+
+void UI::DeleteOldLabel(int x, int y)
+{
+	int MsgX = x;
+	int MsgY = y;
+	pWind->SetBrush(WHITE);
+	pWind->SetPen(WHITE);
+	pWind->DrawRectangle(MsgX - 50, MsgY - 50, MsgX + 100, MsgY + 50);
+}
+
+//================================================Return to design mode ================================//
+void UI::DesignModeSwitch()
+{
+	this->Clear_Tool_Bar();
+	AppMode = DESIGN;
+	CreateDesignToolBar();	//Create the desgin toolbar
+}
 
 UI::~UI()
 {

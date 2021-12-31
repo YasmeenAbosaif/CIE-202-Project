@@ -47,6 +47,10 @@ class UI
 		ITM_BUZZER,
 		ITM_FUSE,
 		ITM_SAVE,
+		ITM_Label,    // Label item
+		ITM_Edit,   // Edit item
+		//TODO: Add more items names here
+		ITM_SIM_Switch,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
 
@@ -59,11 +63,11 @@ class UI
 	{
 		//Note: Items are ordered here as they appear in menu
 		ITM_CIRC_SIM,	//Circuit Simulate menu item
-
+		AMMETER,
+		VOLTMETER,
+		ITM_DESIGN_MODE,
 		//TODO:Add more items names here
-
 		ITM_SIM_CNT		//no. of simulation menu items ==> This should be the last line in this enum
-
 	};
 
 
@@ -133,6 +137,20 @@ public:
 
 	void PrintMsg(string msg) const;	//Print a message on Status bar
 
+// SIM MODE
+	void SIM_MODE_Button();
+
+	// Add label & edit 
+	void Label_name(string name, int x, int y);
+
+	//Delete Old label
+	void DeleteOldLabel(int x, int y);
+
+	// Clear_Tool_Bar
+	void Clear_Tool_Bar()const;
+
+	//================================================Return to design mode ===================================
+	void DesignModeSwitch();
 	~UI();
 };
 

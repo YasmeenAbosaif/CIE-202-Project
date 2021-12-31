@@ -41,6 +41,12 @@ public:
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 
+
+	// function for knowing the place of component position
+
+	Component* take_component_position(int x, int y);
+
+
 public: void Save();
 	//destructor
 	~ApplicationManager();

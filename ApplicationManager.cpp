@@ -7,6 +7,10 @@
 #include "Actions\ActionAddBuzzer.h"
 #include "Actions\ActionAddFuse.h"
 #include "Actions\ActionSave.h"
+#include "Actions\ActionLabel.h"
+#include "Actions\ActionSIM_MODE.h"
+#include "Actions\ActionEDIT.h"
+#include "Actions\ActionDesignModeSwitch.h"
 #include <fstream>
 
 ApplicationManager::ApplicationManager()
@@ -67,8 +71,20 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_CONNECTION:
 			//TODO: Create AddConection Action here
 			break;
-	
 
+		case ADD_Label:
+			pAct = new ActionLabel(this);
+			break;
+		case EDIT_Label:
+			pAct = new ActionEDIT(this);
+			break;
+		case SIM_MODE:
+			pAct = new ActionSIM_MODE(this);
+			break;
+		case DSN_MODE:
+			pAct = new ActionDesignModeSwitch(this);
+			break;
+	
 		case EXIT:
 			///TODO: create ExitAction here
 			break;
@@ -120,4 +136,16 @@ ApplicationManager::~ApplicationManager()
 		delete CompList[i];
 	delete pUI;
 	
+}
+
+// Function for knowing the component for the Editing and labeling
+
+Component* ApplicationManager::take_component_position(int x, int y)
+{
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i]->ISComponent(x, y))
+			return CompList[i];
+	}
+	return nullptr;
 }

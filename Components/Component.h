@@ -43,7 +43,15 @@ public:
 
 	//virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
 
+//===============================================================================================================	
+	//For label & editing
+
+	bool ISComponent(int x, int y) const;
 	
+	void set_label(string name);
+	string get_Label();
+//=============================================================================================================
+
 	Component();	
 	
 	//Destructor must be virtual
