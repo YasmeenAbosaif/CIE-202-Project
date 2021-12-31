@@ -14,6 +14,3 @@ void Ground::Operate()
 {
 
 }
-void Ground:: Save(int id)
-{
-}

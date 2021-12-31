@@ -13,7 +13,6 @@ enum ActionType
 	ADD_BATTERY,
 	ADD_GROUND,
 	ADD_BUZZER,
-	ADD_FUSE,
 
 	ADD_Label,			//Add Label to a Component, a Connection
 	EDIT_Label,			//Edit Label of a Component, a Connection

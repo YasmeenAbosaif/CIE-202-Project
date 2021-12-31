@@ -1,5 +1,6 @@
 #ifndef _ACTION_H
 #define _ACTION_H
+
 class ApplicationManager; //forward class declaration
 
 

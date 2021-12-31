@@ -4,10 +4,8 @@
 #include "Actions\ActionAddGround.h"
 #include "Actions\ActionAddBulb.h"
 #include "Actions\ActionAddSwitch.h"
-#include "Actions\ActionAddBuzzer.h"
-#include "Actions\ActionAddFuse.h"
-#include "Actions\ActionSave.h"
-#include <fstream>
+
+
 
 ApplicationManager::ApplicationManager()
 {
@@ -53,17 +51,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_LAMP:
 			pAct = new ActionAddBulb(this);
 			break;
-		case ADD_BUZZER:
-			pAct = new ActionAddBuzzer(this);
-			break;
-		case ADD_FUSE:
-			pAct = new ActionAddFuse(this);
-			break;
-
-		case SAVE:
-			pAct = new ActionSave(this);
-			break;
-		
 		case ADD_CONNECTION:
 			//TODO: Create AddConection Action here
 			break;
@@ -96,23 +83,6 @@ UI* ApplicationManager::GetUI()
 }
 
 ////////////////////////////////////////////////////////////////////
-
-
-void ApplicationManager::Save()
-{
-	
-	ofstream outfile;
-	
-	outfile.open("test.txt");
-	//outfile << 1 << "\n" << 2;
-	outfile << CompCount << "\n";
-	for(int i =0; i<CompCount; i++)
-	{
-		CompList[i]->Save(i);
-	}
-	outfile.close();
-
-}
 
 ApplicationManager::~ApplicationManager()
 {

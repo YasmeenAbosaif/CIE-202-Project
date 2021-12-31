@@ -14,8 +14,3 @@ void Switch::Operate()
 {
 
 }
-
-void Switch:: Save(int id)
-{
-
-}

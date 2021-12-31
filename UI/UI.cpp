@@ -97,17 +97,11 @@ ActionType UI::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_RES:	 return ADD_RESISTOR;
-			case ITM_BATTERY:return  ADD_BATTERY;
-			case ITM_SWITCH: return   ADD_SWITCH;
-			case ITM_GROUND: return   ADD_GROUND;
-			case ITM_LAMP:   return     ADD_LAMP;
-			case ITM_BUZZER: return   ADD_BUZZER;
-			case ITM_FUSE:   return     ADD_FUSE;
-			case ITM_SAVE:   return         SAVE;
-
-
-
+			case ITM_RES:	return ADD_RESISTOR;
+			case ITM_BATTERY:return ADD_BATTERY;
+			case ITM_SWITCH: return  ADD_SWITCH;
+			case ITM_GROUND: return ADD_GROUND;
+			case ITM_LAMP:   return   ADD_LAMP;
 
 			case ITM_EXIT:	return EXIT;
 
@@ -198,12 +192,6 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_LAMP] = "images\\Menu\\Menu_Lamp.jpg";
 	MenuItemImages[ITM_GROUND] = "images\\Menu\\Menu_Ground.jpg";
 	MenuItemImages[ITM_BATTERY] = "images\\Menu\\Menu_Battery.jpg";
-	MenuItemImages[ITM_BUZZER] = "images\\Menu\\Menu_Buzzer.jpg";
-	MenuItemImages[ITM_FUSE] = "images\\Menu\\Menu_Fuse.jpg";
-	MenuItemImages[ITM_SAVE] = "images\\Menu\\Menu_Save.jpg";
-
-
-
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -258,48 +246,23 @@ void UI::DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected) const
 }
 
 
-void UI::DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected,bool on) const
+void UI::DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected) const
 {
 	string BulbImage;
 	if (selected)
-	{
-		if (on)                                                      ////Modify
-			BulbImage = "Images\\Comp\\Bulb_HI.jpg";
-		else
-			BulbImage = "Images\\Comp\\Bulb_HI.jpg";
-	}
+		BulbImage = "Images\\Comp\\Bulb_HI.jpg";
 	else
-	{
-		if (on)
-			BulbImage = "Images\\Comp\\Bulb.jpg";
-		else
-			BulbImage = "Images\\Comp\\Bulb.jpg";
-	}
-		pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+		BulbImage = "Images\\Comp\\Bulb.jpg"; //ERROR INTENDED TO TEST
+	pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
-void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected, bool open) const
+void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected) const
 {
 	string SwitchImage;
 	if (selected)
-	{
-		if (open)
-			SwitchImage = "Images\\Comp\\Switch_HIon.jpg";
-		else 
-			SwitchImage = "Images\\Comp\\Switch_HIoff.jpg";
-
-	
-	}
+		SwitchImage = "Images\\Comp\\Switch_HI.jpg";
 	else
-	{
-		if(open)
-			SwitchImage = "Images\\Comp\\Switch_on.jpg";
-		else 
-			SwitchImage = "Images\\Comp\\Switch_off.jpg";
-
-			
-	
-	}
+		SwitchImage = "Images\\Comp\\Switch.jpg";
 	pWind->DrawImage(SwitchImage, s_GfxInfo.PointsList[0].x, s_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
@@ -312,31 +275,6 @@ void UI::DrawGround(const GraphicsInfo& g_GfxInfo, bool selected) const
 	else
 		GroundImage = "Images\\Comp\\Ground.jpg";
 	pWind->DrawImage(GroundImage, g_GfxInfo.PointsList[0].x, g_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-}
-
-
-void UI::DrawBuzzer(const GraphicsInfo& bz_GfxInfo, bool selected) const
-{
-	string BuzImage;
-	if (selected)
-		BuzImage = "Images\\Comp\\Buzzer_HI.jpg";	
-	else
-		BuzImage = "Images\\Comp\\Buzzer.jpg";	
-	
-	pWind->DrawImage(BuzImage, bz_GfxInfo.PointsList[0].x, bz_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-}
-
-
-void UI::DrawFuse(const GraphicsInfo& f_GfxInfo, bool selected) const
-{
-	string FuseImage;
-	if (selected)
-		FuseImage = "Images\\Comp\\Fuse_HI.jpg";	
-	else
-		FuseImage = "Images\\Comp\\Fuse.jpg";	
-
-	
-	pWind->DrawImage(FuseImage, f_GfxInfo.PointsList[0].x, f_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
 
