@@ -14,3 +14,7 @@ void Bulb::Operate()
 {
 
 }
+
+void Bulb:: Save(int id) 
+{
+}

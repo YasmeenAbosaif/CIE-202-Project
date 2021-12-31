@@ -13,6 +13,10 @@ Component::Component()
 
 }
 
-Component::~Component()
-{}
+void Component::Save(int id)
+{
+}
 
+Component::~Component()
+{
+}

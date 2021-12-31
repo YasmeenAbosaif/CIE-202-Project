@@ -10,6 +10,7 @@ private:
 	//Parameters for rectangular area to be occupied by the comp
 	int Cx, Cy;	//Center point of the comp
 	int x1, y1, x2, y2;	//Two corners of the rectangluar area
+	string value;  //Value of the resistance in Ohms
 public:
 	ActionAddRes(ApplicationManager *pApp);
 	virtual ~ActionAddRes(void);

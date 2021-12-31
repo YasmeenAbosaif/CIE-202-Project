@@ -10,5 +10,9 @@ void Connection::Draw(UI* pUI)
 {
 	pUI->DrawConnection(*pGfxInfo);
 }
+void Connection:: Save(int id)
+{
+
+}
 
 
