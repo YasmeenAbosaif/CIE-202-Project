@@ -44,6 +44,12 @@ enum ActionType
 
 };
 
+enum Terminal  //terminals of the components
+{
+	LEFT,
+	RIGHT
+};
+
 enum  MODE	//Modes of operation
 {
 	DESIGN,

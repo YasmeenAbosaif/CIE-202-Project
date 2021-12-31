@@ -99,6 +99,10 @@ ActionType UI::GetUserAction() const
 			{
 			case ITM_RES:	 return ADD_RESISTOR;
 			case ITM_BATTERY:return  ADD_BATTERY;
+<<<<<<< HEAD
+			case ITM_WIRE:   return ADD_CONNECTION;
+=======
+>>>>>>> refs/remotes/origin/main
 			case ITM_SWITCH: return   ADD_SWITCH;
 			case ITM_GROUND: return   ADD_GROUND;
 			case ITM_LAMP:   return     ADD_LAMP;
@@ -277,6 +281,10 @@ void UI::DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected,bool on) const
 			BulbImage = "Images\\Comp\\Bulb_HI.jpg";
 	}
 	else
+<<<<<<< HEAD
+		BulbImage = "Images\\Comp\\Bulb.jpg"; 
+	pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+=======
 	{
 		if (on)
 			BulbImage = "Images\\Comp\\Bulb.jpg";
@@ -284,6 +292,7 @@ void UI::DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected,bool on) const
 			BulbImage = "Images\\Comp\\Bulb.jpg";
 	}
 		pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+>>>>>>> refs/remotes/origin/main
 }
 
 void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected, bool open) const
@@ -389,7 +398,13 @@ void UI::SIM_MODE_Button()
 
 void UI::DrawConnection(const GraphicsInfo& r_GfxInfo, bool selected) const
 {
-	//TODO: Add code to draw connection
+	if (selected)
+		pWind->SetPen(RED, ciDefBrushSize);	//use red pen to draw highlited connection
+	else
+		pWind->SetPen(BLACK, ciDefBrushSize); //use black pen to draw normal connection
+
+	//Draw connection with Gfx_Info (two endpoints)
+	pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y, FRAME);
 }
 
 

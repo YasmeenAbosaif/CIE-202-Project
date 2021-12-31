@@ -128,7 +128,11 @@ public:
 	void DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawBulb(const GraphicsInfo& bu_GfxInfo, bool selected = false,bool on=false) const;
 	void DrawGround(const GraphicsInfo& g_GfxInfo, bool selected = false) const;
+<<<<<<< HEAD
+	void DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected = false) const;
+=======
 	void DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected = false, bool open= true) const;
+>>>>>>> refs/remotes/origin/main
 	void DrawBuzzer(const GraphicsInfo& bz_GfxInfo, bool selected = false) const;
 	void DrawFuse(const GraphicsInfo& f_GfxInfo, bool selected = false) const;
 

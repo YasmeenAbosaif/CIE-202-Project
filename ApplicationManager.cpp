@@ -7,10 +7,18 @@
 #include "Actions\ActionAddBuzzer.h"
 #include "Actions\ActionAddFuse.h"
 #include "Actions\ActionSave.h"
+<<<<<<< HEAD
 #include "Actions\ActionLabel.h"
 #include "Actions\ActionSIM_MODE.h"
 #include "Actions\ActionEDIT.h"
 #include "Actions\ActionDesignModeSwitch.h"
+=======
+<<<<<<< HEAD
+#include "ActionConnect.h"
+#include "ActionSelect.h"
+=======
+>>>>>>> refs/remotes/origin/main
+>>>>>>> 8536dfaf5ea30ebe8e6cfe076e156f6f3a4e8baf
 #include <fstream>
 
 ApplicationManager::ApplicationManager()
@@ -27,6 +35,11 @@ ApplicationManager::ApplicationManager()
 void ApplicationManager::AddComponent(Component* pComp)
 {
 	CompList[CompCount++] = pComp;		
+}
+
+void ApplicationManager::AddConnection(Connection* pConn)
+{
+	ConnList[ConnCount++] = pConn;
 }
 ////////////////////////////////////////////////////////////////////
 
@@ -69,8 +82,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		
 		case ADD_CONNECTION:
-			//TODO: Create AddConection Action here
+			pAct = new ActionConnect(this);
 			break;
+<<<<<<< HEAD
+=======
+	
+		case SELECT:
+			pAct = new ActionSelect(this);
+			break;
+>>>>>>> 8536dfaf5ea30ebe8e6cfe076e156f6f3a4e8baf
 
 		case ADD_Label:
 			pAct = new ActionLabel(this);
@@ -103,6 +123,8 @@ void ApplicationManager::UpdateInterface()
 		for(int i=0; i<CompCount; i++)
 			CompList[i]->Draw(pUI);
 
+		for (int i = 0; i < ConnCount; i++)
+			ConnList[i]->Draw(pUI);
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -113,6 +135,33 @@ UI* ApplicationManager::GetUI()
 
 ////////////////////////////////////////////////////////////////////
 
+<<<<<<< HEAD
+//I will delete those getters later so do not use them
+
+int ApplicationManager::GetCompCount()
+{
+	return CompCount;
+}
+
+int ApplicationManager::GetConnCount()
+{
+	return ConnCount;
+}
+
+Component** ApplicationManager::GetCompList()
+{
+	return CompList;
+}
+
+Connection** ApplicationManager::GetConnList()
+{
+	return ConnList;
+}
+
+
+///////////////////////////////////////////////////////////////
+=======
+>>>>>>> refs/remotes/origin/main
 
 void ApplicationManager::Save()
 {
@@ -134,6 +183,10 @@ ApplicationManager::~ApplicationManager()
 {
 	for(int i=0; i<CompCount; i++)
 		delete CompList[i];
+
+	for (int i = 0; i < ConnCount; i++)
+		delete ConnList[i];
+
 	delete pUI;
 	
 }

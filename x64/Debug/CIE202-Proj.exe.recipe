@@ -2,7 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>C:\Users\WIN10\Desktop\CIE-202-Project\x64\Debug\CIE202-Proj.exe</FullPath>
+=======
+<<<<<<< HEAD
+      <FullPath>C:\Users\pc\Desktop\Project_C++\project\CIE-202-Project\x64\Debug\CIE202-Proj.exe</FullPath>
+=======
+      <FullPath>D:\CIE-202\x64\Debug\CIE202-Proj.exe</FullPath>
+>>>>>>> refs/remotes/origin/main
+>>>>>>> 8536dfaf5ea30ebe8e6cfe076e156f6f3a4e8baf
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
