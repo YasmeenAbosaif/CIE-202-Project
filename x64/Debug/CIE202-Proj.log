@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+﻿  UI.cpp
+C:\Users\WIN10\Desktop\CIE-202-Project\UI\UI.cpp(150): warning C4715: 'UI::GetUserAction': not all control paths return a value
+  CIE202-Proj.vcxproj -> C:\Users\WIN10\Desktop\CIE-202-Project\x64\Debug\CIE202-Proj.exe
+=======
+<<<<<<< HEAD
+﻿  UI.cpp
+  CIE202-Proj.vcxproj -> C:\Users\pc\Desktop\Project_C++\project\CIE-202-Project\x64\Debug\CIE202-Proj.exe
+=======
 ﻿  ActionAddBattery.cpp
   ActionAddBulb.cpp
   ActionAddBuzzer.cpp
@@ -70,3 +79,5 @@ D:\CIE-202\CMUgraphicsLib\jpeg\jerror.c(172,21): warning C4024: 'sprintf_s': dif
   jutils.c
   Generating Code...
   CIE202-Proj.vcxproj -> D:\CIE-202\x64\Debug\CIE202-Proj.exe
+>>>>>>> refs/remotes/origin/main
+>>>>>>> 8536dfaf5ea30ebe8e6cfe076e156f6f3a4e8baf

@@ -1,2 +1,12 @@
+<<<<<<< HEAD
+PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.30.30528:TargetPlatformVersion=10.0.19041.0:
+Debug|x64|C:\Users\WIN10\Desktop\CIE-202-Project\|
+=======
+<<<<<<< HEAD
+PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.30.30528:TargetPlatformVersion=10.0.19041.0:
+Debug|x64|C:\Users\pc\Desktop\Project_C++\project\CIE-202-Project\|
+=======
 PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.30.30705:TargetPlatformVersion=10.0.19041.0:
 Debug|x64|D:\CIE-202\|
+>>>>>>> refs/remotes/origin/main
+>>>>>>> 8536dfaf5ea30ebe8e6cfe076e156f6f3a4e8baf

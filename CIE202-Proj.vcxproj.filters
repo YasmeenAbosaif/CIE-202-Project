@@ -180,6 +180,10 @@
     <ClCompile Include="Actions\ActionSave.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ActionEDIT.cpp" />
+    <ClCompile Include="Actions\ActionLabel.cpp" />
+    <ClCompile Include="Actions\ActionSIM_MODE.cpp" />
+    <ClCompile Include="Actions\ActionDesignModeSwitch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h">
@@ -298,6 +302,10 @@
     <ClInclude Include="Actions\ActionSave.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\ActionEDIT.h" />
+    <ClInclude Include="Actions\ActionLabel.h" />
+    <ClInclude Include="Actions\ActionSIM_MODE.h" />
+    <ClInclude Include="Actions\ActionDesignModeSwitch.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMUgraphicsLib\Manual.txt">
