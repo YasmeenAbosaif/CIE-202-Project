@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 F:\C++\Project\Elec Circuit Code Framework\x64\Debug\CIE202-Proj.exe
 C:\Users\pc\Desktop\Project_C++\project\CIE-202-Project\x64\Debug\CIE202-Proj.exe
+=======
+D:\CIE-202\x64\Debug\CIE202-Proj.exe
+>>>>>>> refs/remotes/origin/main

@@ -83,7 +83,13 @@ Component::Component()
 void Component::Save(int id)
 {
 }
+<<<<<<< HEAD
 
 Component::~Component()
 {}
+=======
+>>>>>>> refs/remotes/origin/main
 
+Component::~Component()
+{
+}

@@ -25,6 +25,13 @@ void ActionAddBattery::Execute()
 	//Clear Status Bar
 	pUI->ClearStatusBar();
 
+	//Read the emf value
+	pUI->PrintMsg("Enter the emf value in Volts: ");
+	emf_value = pUI->GetSrting();
+
+	pUI->ClearStatusBar();
+
+
 
 	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 

@@ -56,11 +56,14 @@ public:
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 
+<<<<<<< HEAD
 	//Adds a new connection to the list of connections
 	void AddConnection(Connection* pConn);
 
 
 
+=======
+>>>>>>> refs/remotes/origin/main
 public: void Save();
 	//destructor
 	~ApplicationManager();

@@ -14,3 +14,8 @@ void Resistor::Operate()
 {
 
 }
+
+void Resistor::Save(int id)
+{
+	
+}

@@ -24,6 +24,12 @@ void ActionAddBulb::Execute()
 	//Clear Status Bar
 	pUI->ClearStatusBar();
 
+	//Read the bulb resistance value
+	pUI->PrintMsg("Enter the resistance of the bulb value in Ohms: ");
+	bulb_resistance = pUI->GetSrting();
+
+	pUI->ClearStatusBar();
+
 
 	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 

@@ -7,8 +7,11 @@
 #include "Actions\ActionAddBuzzer.h"
 #include "Actions\ActionAddFuse.h"
 #include "Actions\ActionSave.h"
+<<<<<<< HEAD
 #include "ActionConnect.h"
 #include "ActionSelect.h"
+=======
+>>>>>>> refs/remotes/origin/main
 #include <fstream>
 
 ApplicationManager::ApplicationManager()
@@ -109,6 +112,7 @@ UI* ApplicationManager::GetUI()
 
 ////////////////////////////////////////////////////////////////////
 
+<<<<<<< HEAD
 //I will delete those getters later so do not use them
 
 int ApplicationManager::GetCompCount()
@@ -133,6 +137,8 @@ Connection** ApplicationManager::GetConnList()
 
 
 ///////////////////////////////////////////////////////////////
+=======
+>>>>>>> refs/remotes/origin/main
 
 void ApplicationManager::Save()
 {
