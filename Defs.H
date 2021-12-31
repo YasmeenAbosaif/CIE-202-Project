@@ -44,6 +44,16 @@ enum ActionType
 
 };
 
+//==================================== for editing component value =====================================
+enum CircuitElements
+{
+	Elements,
+	RESISTOR,		//Add a resistor
+	LAMP,			//Add LAMP
+	BATTERY,
+	BUZZER,
+};
+
 enum Terminal  //terminals of the components
 {
 	LEFT,
@@ -58,8 +68,5 @@ enum  MODE	//Modes of operation
 
 //Maximum number of connections that can be connected to any output components
 #define MAX_CONNS 20
-
-
-
 
 #endif

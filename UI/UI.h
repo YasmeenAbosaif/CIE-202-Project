@@ -33,7 +33,6 @@ struct GraphicsInfo
 
 class UI
 {
-
 	enum DsgnMenuItem //The items of the design menu (you should add more items)
 	{
 		//Note: Items are ordered here as they appear in the menu
@@ -69,8 +68,6 @@ class UI
 		//TODO:Add more items names here
 		ITM_SIM_CNT		//no. of simulation menu items ==> This should be the last line in this enum
 	};
-
-
 
 	MODE AppMode;		//Application Mode (design or simulation)
 
@@ -128,11 +125,7 @@ public:
 	void DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected = false) const;
 	void DrawBulb(const GraphicsInfo& bu_GfxInfo, bool selected = false,bool on=false) const;
 	void DrawGround(const GraphicsInfo& g_GfxInfo, bool selected = false) const;
-<<<<<<< HEAD
-	void DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected = false) const;
-=======
 	void DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected = false, bool open= true) const;
->>>>>>> refs/remotes/origin/main
 	void DrawBuzzer(const GraphicsInfo& bz_GfxInfo, bool selected = false) const;
 	void DrawFuse(const GraphicsInfo& f_GfxInfo, bool selected = false) const;
 
@@ -157,5 +150,4 @@ public:
 	void DesignModeSwitch();
 	~UI();
 };
-
 #endif

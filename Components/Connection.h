@@ -5,13 +5,16 @@ class Component;	//forward class declaration
 
 class Connection 
 {
+
+	// declared variable for name of connection
+	string connectionLabel;
 	//connection connects between two compoenets
 	Component	*Cmpnt1, *Cmpnt2;
 	GraphicsInfo * m_pGfxInfo;	//The parameters required to draw a connection
 	bool selected = false;
 
 	////////////////////////////////////// Coordinates ////////////////////////////////////////////////
-
+	
 	//coordinates of endpoint 1
 	double endpoint_X1;
 	double endpoint_y1;
@@ -30,7 +33,14 @@ public:
 
 	virtual void Draw(UI* );	//for connection to Draw itself
 	virtual void Save(int id);
+	 
 
-	
+//================================	setters and getters for connections================================
+	void set_labelConn(string name);
+	string get_LabelConn();
+
+//Destructor
+	~Connection();
+
 
 };

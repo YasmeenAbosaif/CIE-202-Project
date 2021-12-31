@@ -11,12 +11,11 @@ ActionLabel::~ActionLabel(void)
 
 void ActionLabel::Execute()
 {
-
 	//Get a Pointer to the user Interfaces
 	UI* pUI = pManager->GetUI();
-
+	pManager->UpdateInterface();
 	//Print Action Message
-	pUI->PrintMsg("Choose the needed component");
+	pUI->PrintMsg("Choose the needed component or connection");
 
 	//Get Center point of the area where the Comp label should be written
 	pUI->GetPointClicked(Cx, Cy);
@@ -27,7 +26,7 @@ void ActionLabel::Execute()
 	// Label  for component & connection 
 
 	Component* component_ = pManager->take_component_position(Cx, Cy);  // Take the label position for the drawn component
-	//Connection* connection_ = pManager->take_component_position(Cx, Cy);  // Take the label position for the drawn connection
+	Connection* connection_ = pManager->take_connection_position(Cx, Cy);  // Take the label position for the drawn connection
 	if (component_ != nullptr)              // we can check it by nullptr
 	{
 		pUI->PrintMsg(" Write label for the component ");
@@ -36,15 +35,19 @@ void ActionLabel::Execute()
 		component_->set_label(name);
 		pUI->Label_name(name,Cx,Cy);
 	}
-	//else if (connection_ != nullptr)
-	//{
-	//	pUI->PrintMsg(" Write label for the connection ");
-	//	string name = pUI->GetSrting();   // Get string is a function for getting label
-	//	component_->set_label(name);
-	//}
+	else if (connection_ != nullptr)
+	{
+		pUI->PrintMsg(" Write label for the connection ");
+		string name = pUI->GetSrting();   // Get string is a function for getting label
+		pUI->ClearStatusBar();
+		connection_->set_labelConn(name);
+		pUI->Label_name(name, Cx, Cy);
+		pUI->ClearStatusBar();
+	}
 	else
 	{
 		pUI->PrintMsg(" Neither Component nor connection is selected ");
+		pUI->ClearStatusBar();
 	}
 }
 

@@ -7,20 +7,13 @@
 #include "Actions\ActionAddBuzzer.h"
 #include "Actions\ActionAddFuse.h"
 #include "Actions\ActionSave.h"
-<<<<<<< HEAD
 #include "Actions\ActionLabel.h"
 #include "Actions\ActionSIM_MODE.h"
 #include "Actions\ActionEDIT.h"
 #include "Actions\ActionDesignModeSwitch.h"
-=======
-<<<<<<< HEAD
-#include "ActionConnect.h"
-#include "ActionSelect.h"
-=======
->>>>>>> refs/remotes/origin/main
->>>>>>> 8536dfaf5ea30ebe8e6cfe076e156f6f3a4e8baf
+#include "Actions\ActionSelect.h"
+#include "Actions\ActionConnect.h"
 #include <fstream>
-
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
@@ -84,13 +77,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_CONNECTION:
 			pAct = new ActionConnect(this);
 			break;
-<<<<<<< HEAD
-=======
-	
 		case SELECT:
 			pAct = new ActionSelect(this);
 			break;
->>>>>>> 8536dfaf5ea30ebe8e6cfe076e156f6f3a4e8baf
 
 		case ADD_Label:
 			pAct = new ActionLabel(this);
@@ -135,7 +124,7 @@ UI* ApplicationManager::GetUI()
 
 ////////////////////////////////////////////////////////////////////
 
-<<<<<<< HEAD
+
 //I will delete those getters later so do not use them
 
 int ApplicationManager::GetCompCount()
@@ -160,8 +149,7 @@ Connection** ApplicationManager::GetConnList()
 
 
 ///////////////////////////////////////////////////////////////
-=======
->>>>>>> refs/remotes/origin/main
+
 
 void ApplicationManager::Save()
 {
@@ -202,3 +190,15 @@ Component* ApplicationManager::take_component_position(int x, int y)
 	}
 	return nullptr;
 }
+
+Connection* ApplicationManager::take_connection_position(int x, int y)
+{
+	for (int i = 0; i < ConnCount; i++)
+	{
+		if (ConnList[i]->isInRegion(x, y,pUI))
+			return ConnList[i];
+	}
+	return nullptr;
+}
+
+

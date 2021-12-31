@@ -43,6 +43,7 @@ double Connection::evaluateLineEquation(int x)
 
 }
 
+// Used also in getting position of connection for labeling and editing the connection name
 
 bool Connection::isInRegion(int x, int y, UI* pUI)
 {
@@ -75,9 +76,18 @@ void Connection:: Save(int id)
 {
 
 }
-void Connection:: Save(int id)
+
+
+//================================	setters and getters for connections ====================================
+void Connection::set_labelConn(string name) 
 {
-
+	connectionLabel = name;
 }
-
-
+string Connection::get_LabelConn()
+{
+	return connectionLabel;
+}
+//==========================================================================================================
+Connection::~Connection()
+{
+}

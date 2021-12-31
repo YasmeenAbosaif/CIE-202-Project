@@ -56,23 +56,18 @@ public:
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 
-<<<<<<< HEAD
-
 	// function for knowing the place of component position
 
+// ============================  for labeling , editing  comp & conn =======================================
 	Component* take_component_position(int x, int y);
 
+	Connection* take_connection_position(int x, int y);
 
-=======
-<<<<<<< HEAD
-	//Adds a new connection to the list of connections
+//==========================================================================================================
+	
+//Adds a new connection to the list of connections
 	void AddConnection(Connection* pConn);
 
-
-
-=======
->>>>>>> refs/remotes/origin/main
->>>>>>> 8536dfaf5ea30ebe8e6cfe076e156f6f3a4e8baf
 public: void Save();
 	//destructor
 	~ApplicationManager();

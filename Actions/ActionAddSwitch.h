@@ -1,5 +1,4 @@
 #pragma once
-
 #include "action.h"
 #include "..\Components\Switch.h"
 

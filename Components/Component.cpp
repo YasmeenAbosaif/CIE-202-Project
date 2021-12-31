@@ -83,7 +83,7 @@ Component::Component()
 void Component::Save(int id)
 {
 }
-<<<<<<< HEAD
+
 // ================================================= label & edit ============================================
 void Component::set_label(string name)
 {
@@ -93,14 +93,6 @@ string Component::get_Label()
 {
 	return m_Label;
 }
-=======
-<<<<<<< HEAD
-
-Component::~Component()
-{}
-=======
->>>>>>> refs/remotes/origin/main
->>>>>>> 8536dfaf5ea30ebe8e6cfe076e156f6f3a4e8baf
 
 bool Component::ISComponent(int x, int y) const
 {

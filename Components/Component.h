@@ -5,7 +5,6 @@
 #include "..\UI\UI.h"
 #include "Connection.h"
 
-
 //Base class for all components (resistor, capacitor,....etc) .
 class Component
 {
@@ -52,7 +51,7 @@ public:
 	
 	virtual void Save(int id) = 0;    //**********TESTING***********//
 
-<<<<<<< HEAD
+
 	Terminal whichTerminal(int x); //determinw which terminale is selected
 
 
@@ -67,8 +66,7 @@ public:
 	double getcornerpoint_X1();
 	double getcornerpoint_X2();
 	double getcenterpoint_y();
-=======
->>>>>>> refs/remotes/origin/main
+
 
 	//virtual int GetOutPinStatus()=0;	//returns status of outputpin if LED, return -1
 	//virtual int GetInputPinStatus(int n)=0;	//returns status of Inputpin # n if SWITCH, return -1
