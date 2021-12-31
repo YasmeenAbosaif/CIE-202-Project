@@ -97,11 +97,18 @@ ActionType UI::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_RES:	return ADD_RESISTOR;
-			case ITM_BATTERY:return ADD_BATTERY;
-			case ITM_SWITCH: return  ADD_SWITCH;
-			case ITM_GROUND: return ADD_GROUND;
-			case ITM_LAMP:   return   ADD_LAMP;
+			case ITM_RES:	 return ADD_RESISTOR;
+			case ITM_BATTERY:return  ADD_BATTERY;
+			case ITM_WIRE:   return ADD_CONNECTION;
+			case ITM_SWITCH: return   ADD_SWITCH;
+			case ITM_GROUND: return   ADD_GROUND;
+			case ITM_LAMP:   return     ADD_LAMP;
+			case ITM_BUZZER: return   ADD_BUZZER;
+			case ITM_FUSE:   return     ADD_FUSE;
+			case ITM_SAVE:   return         SAVE;
+
+
+
 
 			case ITM_EXIT:	return EXIT;
 
@@ -192,6 +199,12 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_LAMP] = "images\\Menu\\Menu_Lamp.jpg";
 	MenuItemImages[ITM_GROUND] = "images\\Menu\\Menu_Ground.jpg";
 	MenuItemImages[ITM_BATTERY] = "images\\Menu\\Menu_Battery.jpg";
+	MenuItemImages[ITM_BUZZER] = "images\\Menu\\Menu_Buzzer.jpg";
+	MenuItemImages[ITM_FUSE] = "images\\Menu\\Menu_Fuse.jpg";
+	MenuItemImages[ITM_SAVE] = "images\\Menu\\Menu_Save.jpg";
+
+
+
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -252,7 +265,7 @@ void UI::DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected) const
 	if (selected)
 		BulbImage = "Images\\Comp\\Bulb_HI.jpg";
 	else
-		BulbImage = "Images\\Comp\\Bulb.jpg"; //ERROR INTENDED TO TEST
+		BulbImage = "Images\\Comp\\Bulb.jpg"; 
 	pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
@@ -278,9 +291,40 @@ void UI::DrawGround(const GraphicsInfo& g_GfxInfo, bool selected) const
 }
 
 
+void UI::DrawBuzzer(const GraphicsInfo& bz_GfxInfo, bool selected) const
+{
+	string BuzImage;
+	if (selected)
+		BuzImage = "Images\\Comp\\Buzzer_HI.jpg";	
+	else
+		BuzImage = "Images\\Comp\\Buzzer.jpg";	
+	
+	pWind->DrawImage(BuzImage, bz_GfxInfo.PointsList[0].x, bz_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
+
+void UI::DrawFuse(const GraphicsInfo& f_GfxInfo, bool selected) const
+{
+	string FuseImage;
+	if (selected)
+		FuseImage = "Images\\Comp\\Fuse_HI.jpg";	
+	else
+		FuseImage = "Images\\Comp\\Fuse.jpg";	
+
+	
+	pWind->DrawImage(FuseImage, f_GfxInfo.PointsList[0].x, f_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
+
 void UI::DrawConnection(const GraphicsInfo& r_GfxInfo, bool selected) const
 {
-	//TODO: Add code to draw connection
+	if (selected)
+		pWind->SetPen(RED, ciDefBrushSize);	//use red pen to draw highlited connection
+	else
+		pWind->SetPen(BLACK, ciDefBrushSize); //use black pen to draw normal connection
+
+	//Draw connection with Gfx_Info (two endpoints)
+	pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y, FRAME);
 }
 
 

@@ -44,6 +44,9 @@ class UI
 		ITM_GROUND,      //Ground item in menu
 		ITM_BATTERY,    //Battery item in menu
 		ITM_WIRE,       //Wire item in menu
+		ITM_BUZZER,
+		ITM_FUSE,
+		ITM_SAVE,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
 
@@ -122,8 +125,8 @@ public:
 	void DrawBulb(const GraphicsInfo& bu_GfxInfo, bool selected = false) const;
 	void DrawGround(const GraphicsInfo& g_GfxInfo, bool selected = false) const;
 	void DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected = false) const;
-
-
+	void DrawBuzzer(const GraphicsInfo& bz_GfxInfo, bool selected = false) const;
+	void DrawFuse(const GraphicsInfo& f_GfxInfo, bool selected = false) const;
 
 	// Draws Connection
 	void DrawConnection(const GraphicsInfo& r_GfxInfo, bool selected = false) const;

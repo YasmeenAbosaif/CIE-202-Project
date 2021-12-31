@@ -14,16 +14,16 @@ class ApplicationManager
 
 private:
 	int CompCount;		//Actual number of Components
+	int ConnCount;      //Actual number of Connections
 	Component* CompList[MaxCompCount];	//List of all Components (Array of pointers)
+	Connection* ConnList[MaxCompCount];	//List of all Connections (Array of pointers)
 
 	UI* pUI; //pointer to the UI
 
 
-public:
-
-
 public:	
 	ApplicationManager(); //constructor
+
 
 	//Reads the required action from the user and returns the corresponding action type
 	ActionType GetUserAction();
@@ -35,11 +35,33 @@ public:
 
 	//Gets a pointer to UI Object
 	UI* GetUI();
-	
+	/////////////////////////////// getters ////////////////////////////////////////////////
+
+	//I will delete those getters later so do not use them
+
+	//Gets current number of Components
+	int GetCompCount();
+
+	//Gets current number of Connections
+	int GetConnCount();
+
+	//Gets List of all Components (Array of pointers)
+	Component** GetCompList();
+
+	//Gets List of all Connections (Array of pointers)
+	Connection** GetConnList();
+
+	/////////////////////////////////////////////////////////////////////////////////////////
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 
+	//Adds a new connection to the list of connections
+	void AddConnection(Connection* pConn);
+
+
+
+public: void Save();
 	//destructor
 	~ApplicationManager();
 };

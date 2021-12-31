@@ -13,6 +13,7 @@ enum ActionType
 	ADD_BATTERY,
 	ADD_GROUND,
 	ADD_BUZZER,
+	ADD_FUSE,
 
 	ADD_Label,			//Add Label to a Component, a Connection
 	EDIT_Label,			//Edit Label of a Component, a Connection
@@ -37,6 +38,12 @@ enum ActionType
 	STATUS_BAR,		//A click on the status bar
 	DSN_TOOL,	//A click on an empty place in the design tool bar
 
+};
+
+enum Terminal  //terminals of the components
+{
+	LEFT,
+	RIGHT
 };
 
 enum  MODE	//Modes of operation
