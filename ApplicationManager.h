@@ -25,6 +25,7 @@ public:
 public:	
 	ApplicationManager(); //constructor
 
+
 	//Reads the required action from the user and returns the corresponding action type
 	ActionType GetUserAction();
 	
@@ -40,6 +41,7 @@ public:
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 
+public: void Save();
 	//destructor
 	~ApplicationManager();
 };

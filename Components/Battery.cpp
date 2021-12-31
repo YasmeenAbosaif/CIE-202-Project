@@ -14,3 +14,7 @@ void Battery::Operate()
 {
 
 }
+
+void Battery::Save(int id )
+{
+}
