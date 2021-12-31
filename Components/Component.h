@@ -4,6 +4,8 @@
 #include "..\Defs.h"
 #include "..\UI\UI.h"
 #include "Connection.h"
+#include <iostream>
+#include <fstream>
 
 
 //Base class for all components (resistor, capacitor,....etc) .
@@ -35,7 +37,7 @@ public:
 	virtual void Operate() = 0;	//Calculates the output voltage according to the inputs
 	virtual void Draw(UI* ) = 0;	//for each component to Draw itself
 	
-	virtual void Save(int id) = 0;    //**********TESTING***********//
+	virtual void Save(ofstream& file, int id) = 0;    //**********TESTING***********//
 
 
 	//virtual int GetOutPinStatus()=0;	//returns status of outputpin if LED, return -1

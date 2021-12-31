@@ -14,7 +14,9 @@ void Fuse::Operate()
 {
 
 }
-void Fuse:: Save(int id)
+void Fuse::Save(ofstream& file, int id)
 {
-
+	string label = "MY LABEL";			//TO BE MODIFIED WITH THE ACTUAL LABEL.
+	file << "Ana Fuse. \t" << id + 1 << "\t" << label << "\t" << "No val." << "\t" << m_pGfxInfo->PointsList[0].x
+		<< "\t" << m_pGfxInfo->PointsList[0].y << "\n";
 }

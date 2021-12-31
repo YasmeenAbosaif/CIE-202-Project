@@ -14,6 +14,9 @@ void Ground::Operate()
 {
 
 }
-void Ground:: Save(int id)
+void Ground::Save(ofstream& file, int id)
 {
+	string label = "MY LABEL";			//TO BE MODIFIED WITH THE ACTUAL LABEL.
+	file << "Ana Ground. \t" << id + 1 << "\t" << label << "\t" << "NO Val." << "\t" << m_pGfxInfo->PointsList[0].x
+		<< "\t" << m_pGfxInfo->PointsList[0].y << "\n";
 }

@@ -105,10 +105,10 @@ void ApplicationManager::Save()
 	
 	outfile.open("test.txt");
 	//outfile << 1 << "\n" << 2;
-	outfile << CompCount << "\n";
+	outfile <<"#Components: "<< CompCount << "\n";
 	for(int i =0; i<CompCount; i++)
 	{
-		CompList[i]->Save(i);
+		CompList[i]->Save(outfile, i);
 	}
 	outfile.close();
 

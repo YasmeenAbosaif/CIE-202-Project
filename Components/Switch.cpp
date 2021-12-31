@@ -15,7 +15,9 @@ void Switch::Operate()
 
 }
 
-void Switch:: Save(int id)
+void Switch:: Save(ofstream& file, int id)
 {
-
+	string label = "MY LABEL";			//TO BE MODIFIED WITH THE ACTUAL LABEL.
+	file << "Ana Switch. \t" << id + 1 << "\t" << label << "\t" << "No Val" << "\t" << m_pGfxInfo->PointsList[0].x
+		<< "\t" << m_pGfxInfo->PointsList[0].y << "\n";
 }

@@ -13,8 +13,9 @@ Component::Component()
 
 }
 
-void Component::Save(int id)
+void Component::Save(ofstream& file, int id)
 {
+
 }
 
 Component::~Component()

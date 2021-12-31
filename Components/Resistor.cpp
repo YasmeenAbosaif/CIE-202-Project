@@ -15,7 +15,14 @@ void Resistor::Operate()
 
 }
 
-void Resistor::Save(int id)
+void Resistor::setValue(string val)
 {
-	
+	value = val;
+}
+
+void Resistor::Save(ofstream& file, int id)
+{
+	string label = "MY LABEL";			//TO BE MODIFIED WITH THE ACTUAL LABEL.
+	file << "Ana Resistor. \t" << id+1 << "\t" << label << "\t" << value << "\t" << m_pGfxInfo->PointsList[0].x
+	<<"\t" << m_pGfxInfo->PointsList[0].y << "\n";
 }

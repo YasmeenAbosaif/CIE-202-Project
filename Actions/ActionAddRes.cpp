@@ -28,6 +28,7 @@ void ActionAddRes::Execute()
 	pUI->PrintMsg("Enter the resistance value in Ohms: ");
 	string value = pUI->GetSrting();
 	
+	
 pUI->ClearStatusBar();
 
 
@@ -46,6 +47,7 @@ pUI->ClearStatusBar();
 	 
 	Resistor* pR = new Resistor(pGInfo);
 	pManager->AddComponent(pR);
+	pR->setValue(value);
 }
 
 void ActionAddRes::Undo()

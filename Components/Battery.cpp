@@ -15,6 +15,15 @@ void Battery::Operate()
 
 }
 
-void Battery::Save(int id )
+void Battery::setValue(string val)
 {
+	value = val;
+}
+
+void Battery::Save(ofstream& file, int id)
+{
+	string label = "MY LABEL";   //TO BE MODIFIED WITH THE ACTUAL LABEL.
+
+	file << "Ana Battery. \t" << id + 1 << "\t" << label << "\t" << value << "\t" << m_pGfxInfo->PointsList[0].x
+		<< "\t" << m_pGfxInfo->PointsList[0].y << "\n";
 }

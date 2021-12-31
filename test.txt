@@ -1,1 +1,2 @@
-4
+#Components: 1
+Ana Buzzer. 	1	MY LABEL	17	479	219
