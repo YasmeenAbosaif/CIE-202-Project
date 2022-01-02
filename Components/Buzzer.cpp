@@ -21,6 +21,11 @@ void Buzzer::setValue(string val)
 	value = val;
 }
 
+string Buzzer::getValue()
+{
+	return value;
+}
+
 void Buzzer::Save(ofstream& file, int id)
 {
 	string label = "MY LABEL";    //TO BE MODIFIED WITH THE ACTUAL LABEL.

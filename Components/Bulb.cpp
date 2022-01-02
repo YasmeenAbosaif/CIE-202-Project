@@ -20,6 +20,11 @@ void Bulb:: setValue(string val)
 	value = val;
 }
 
+string Bulb::getValue()
+{
+	return value;
+}
+
 void Bulb::Save(ofstream& file, int id)
 {
 	string label = "MY LABEL";   //TO BE MODIFIED WITH THE ACTUAL LABEL.

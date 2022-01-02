@@ -20,6 +20,11 @@ void Battery::setValue(string val)
 	value = val;
 }
 
+string Battery::getValue()
+{
+	return value;
+}
+
 void Battery::Save(ofstream& file, int id)
 {
 	string label = "MY LABEL";   //TO BE MODIFIED WITH THE ACTUAL LABEL.

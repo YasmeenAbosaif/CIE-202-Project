@@ -20,6 +20,11 @@ void Resistor::setValue(string val)
 	value = val;
 }
 
+string Resistor::getValue()
+{
+	return value;
+}
+
 void Resistor::Save(ofstream& file, int id)
 {
 	string label = "MY LABEL";			//TO BE MODIFIED WITH THE ACTUAL LABEL.
