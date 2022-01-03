@@ -10,6 +10,7 @@ void Fuse::Draw(UI* pUI)
 
 }
 
+
 void Fuse::Operate()
 {
 

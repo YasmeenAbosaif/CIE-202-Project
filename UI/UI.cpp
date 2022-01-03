@@ -21,7 +21,6 @@ UI::UI()
 	CreateStatusBar();		//Create Status bar
 }
 
-
 int UI::getCompWidth() const
 {
 	return COMP_WIDTH;
@@ -324,7 +323,7 @@ void UI::DrawGround(const GraphicsInfo& g_GfxInfo, bool selected) const
 void UI::DrawBuzzer(const GraphicsInfo& bz_GfxInfo, bool selected) const
 {
 	string BuzImage;
-	if (selected)
+	if (selected)	
 		BuzImage = "Images\\Comp\\Buzzer_HI.jpg";	
 	else
 		BuzImage = "Images\\Comp\\Buzzer.jpg";	
@@ -405,16 +404,30 @@ void UI::Label_name(string name, int x, int y)
 	int MsgY = y;
 	pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial");
 	pWind->SetPen(MsgColor);
-	pWind->DrawString(MsgX - 40, MsgY - 40, name);
+	pWind->DrawString(MsgX - 30, MsgY - 30, name);
 }
 
-void UI::DeleteOldLabel(int x, int y)
+void UI::DeleteOldLabel(int x , int y )
 {
-	int MsgX = x;
-	int MsgY = y;
+	int MsgX = x ;
+	int MsgY = y ;
 	pWind->SetBrush(WHITE);
 	pWind->SetPen(WHITE);
-	pWind->DrawRectangle(MsgX - 50, MsgY - 50, MsgX + 100, MsgY + 50);
+	pWind->DrawRectangle(MsgX - 50, MsgY - 50, MsgX+50, MsgY+50);
+}
+
+//void UI:: DeleteOldConnection(int x , int y , int x2 , int y2)
+//{
+//	pWind->SetPen(WHITE,15);
+//	pWind->DrawLine(x, y, x2, y2, FRAME);
+//}
+
+
+//for updates
+
+void UI::UPDATES(int x,int y ,string name)
+{
+	pWind->DrawString(x, y, name);
 }
 
 //================================================Return to design mode ================================//

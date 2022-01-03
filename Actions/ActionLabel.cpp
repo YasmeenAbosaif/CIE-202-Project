@@ -13,7 +13,6 @@ void ActionLabel::Execute()
 {
 	//Get a Pointer to the user Interfaces
 	UI* pUI = pManager->GetUI();
-	pManager->UpdateInterface();
 	//Print Action Message
 	pUI->PrintMsg("Choose the needed component or connection");
 

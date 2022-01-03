@@ -107,7 +107,42 @@ bool Component::ISComponent(int x, int y) const
 		return false;
 }
 
+void Component::DeleteConnectionComponents(Connection* pCon) {
+	for (int i = 0; i < term1_conn_count; i++) {
+		if (term1_connections[i] == pCon)
+			term1_connections[i] = nullptr;
+	}
+	for (int i = 0; i < term2_conn_count; i++) {
+		if (term2_connections[i] == pCon)
+			term2_connections[i] = nullptr;
+	}
+}
+
+int Component::getComponentCenterX(UI* pUI)const 
+{
+	return m_pGfxInfo->PointsList[0].x + pUI->getCompWidth() / 2;
+}
+int Component::getComponentCenterY(UI* pUI)const 
+{
+	return m_pGfxInfo->PointsList[0].y + pUI->getCompHeight() / 2;
+}
+
+void Component::addTerminal1Connection(Connection* c) 
+{
+	term1_connections[term1_conn_count++] = c;
+}
+void Component::addTerminal2Connection(Connection* c) 
+{
+	term2_connections[term2_conn_count++] = c;
+}
+
+
+void Component::setValue(string newvalue)
+{
+	value = newvalue;
+}
 //=============================================================================================================
+
 Component::~Component()
 {
 }

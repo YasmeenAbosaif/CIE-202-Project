@@ -9,6 +9,7 @@
 class Component
 {
 private:
+	string value;
 	string m_Label;
 protected:
 	//Each component has two ending terminals (term1, term2)
@@ -80,6 +81,17 @@ public:
 	
 	void set_label(string name);
 	string get_Label();
+
+	void DeleteConnectionComponents(Connection* pConn);
+	
+	int getComponentCenterX(UI* pUI)const;
+	int getComponentCenterY(UI* pUI)const;
+
+	void Component::addTerminal1Connection(Connection* c);
+	void Component::addTerminal2Connection(Connection* c);
+
+	virtual void setValue(string val);  // To let each component has its own value value
+
 //=============================================================================================================
 
 	Component();	

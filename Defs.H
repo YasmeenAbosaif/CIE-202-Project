@@ -44,16 +44,6 @@ enum ActionType
 
 };
 
-//==================================== for editing component value =====================================
-enum CircuitElements
-{
-	Elements,
-	RESISTOR,		//Add a resistor
-	LAMP,			//Add LAMP
-	BATTERY,
-	BUZZER,
-};
-
 enum Terminal  //terminals of the components
 {
 	LEFT,

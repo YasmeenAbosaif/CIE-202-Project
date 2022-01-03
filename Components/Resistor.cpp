@@ -15,6 +15,12 @@ void Resistor::Operate()
 
 }
 
+void Resistor::setValue(string val)
+{
+	value = val;
+}
+
+
 void Resistor::Save(int id)
 {
 	

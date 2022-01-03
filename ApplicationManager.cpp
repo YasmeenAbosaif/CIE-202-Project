@@ -69,18 +69,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_FUSE:
 			pAct = new ActionAddFuse(this);
 			break;
-
 		case SAVE:
 			pAct = new ActionSave(this);
 			break;
-		
 		case ADD_CONNECTION:
 			pAct = new ActionConnect(this);
 			break;
 		case SELECT:
 			pAct = new ActionSelect(this);
 			break;
-
 		case ADD_Label:
 			pAct = new ActionLabel(this);
 			break;
@@ -93,7 +90,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DSN_MODE:
 			pAct = new ActionDesignModeSwitch(this);
 			break;
-	
 		case EXIT:
 			///TODO: create ExitAction here
 			break;
@@ -109,12 +105,20 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
-		for(int i=0; i<CompCount; i++)
+		pUI->ClearDrawingArea();
+		for (int i = 0; i < CompCount; i++)
+		{
 			CompList[i]->Draw(pUI);
-
+			/*string name = CompList[i]->get_Label();
+			int x = pUI->
+			int y = pUI->
+			pUI->UPDATES(x, y, name);*/
+		}
 		for (int i = 0; i < ConnCount; i++)
 			ConnList[i]->Draw(pUI);
 }
+
+
 
 ////////////////////////////////////////////////////////////////////
 UI* ApplicationManager::GetUI()
@@ -179,7 +183,7 @@ ApplicationManager::~ApplicationManager()
 	
 }
 
-// Function for knowing the component for the Editing and labeling
+// ==================Function for knowing the component for the Editing and labeling=======================
 
 Component* ApplicationManager::take_component_position(int x, int y)
 {
@@ -201,4 +205,20 @@ Connection* ApplicationManager::take_connection_position(int x, int y)
 	return nullptr;
 }
 
-
+// This function is for deleting the component
+void ApplicationManager ::  DeleteConnection(Connection* pConn)
+{
+	for (int i = 0; i < ConnCount; i++)
+	{
+		if (ConnList[i] == pConn && pConn != nullptr)
+		{
+			Component * comp2 = ConnList[i]->getComp(1);
+			Component * comp3 = ConnList[i]->getComp(2);
+			comp2->DeleteConnectionComponents(ConnList[i]);
+			comp3->DeleteConnectionComponents(ConnList[i]);
+			delete ConnList[i];
+			ConnList[i] = nullptr;
+		}
+	}
+}
+//==========================================================================================================

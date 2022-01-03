@@ -38,7 +38,11 @@ public:
 //================================	setters and getters for connections================================
 	void set_labelConn(string name);
 	string get_LabelConn();
-
+	Component* getComp(int n);
+	GraphicsInfo* getconnection() const;
+	int ChooseComponentToDelete(Component* comp);
+	void Connection::setNewComponent(int n, Component* comp);
+//========================================================================================================
 //Destructor
 	~Connection();
 

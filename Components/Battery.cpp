@@ -15,6 +15,11 @@ void Battery::Operate()
 
 }
 
+void Battery::setValue(string val)
+{
+	value = val;
+}
+
 void Battery::Save(int id )
 {
 }

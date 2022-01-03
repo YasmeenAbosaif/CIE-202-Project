@@ -15,6 +15,11 @@ void Bulb::Operate()
 
 }
 
+void Bulb::setValue(string val)
+{
+	value = val;
+}
+
 void Bulb:: Save(int id) 
 {
 }

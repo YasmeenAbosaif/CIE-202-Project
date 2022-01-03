@@ -78,7 +78,7 @@ void Connection:: Save(int id)
 }
 
 
-//================================	setters and getters for connections ====================================
+//===============	setters and getters for connections for labeling and editing ===========================
 void Connection::set_labelConn(string name) 
 {
 	connectionLabel = name;
@@ -87,6 +87,45 @@ string Connection::get_LabelConn()
 {
 	return connectionLabel;
 }
+
+Component* Connection::getComp(int n) {
+	switch (n) {
+	case 1:
+		return Cmpnt1;
+		break;
+	case 2:
+		return Cmpnt2;
+		break;
+	default:
+		return nullptr;
+	}
+}
+
+GraphicsInfo* Connection::getconnection() const {
+	return m_pGfxInfo;
+}
+
+int Connection::ChooseComponentToDelete(Component* comp) {
+	if (Cmpnt1 == comp)
+		return 1;
+	else if (Cmpnt2 == comp)
+		return 2;
+	else
+		return 0;
+}
+
+void Connection::setNewComponent(int n, Component* comp)
+{
+	switch (n) {
+	case 1:
+		Cmpnt1 = comp;
+		break;
+	case 2:
+		Cmpnt2 = comp;
+		break;
+	}
+}
+
 //==========================================================================================================
 Connection::~Connection()
 {

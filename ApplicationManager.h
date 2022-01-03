@@ -13,6 +13,7 @@ class ApplicationManager
 	enum { MaxCompCount = 200 };	//Max no of Components	
 
 private:
+	Component* comp1; Component* comp2;
 	int CompCount;		//Actual number of Components
 	int ConnCount;      //Actual number of Connections
 	Component* CompList[MaxCompCount];	//List of all Components (Array of pointers)
@@ -67,6 +68,11 @@ public:
 	
 //Adds a new connection to the list of connections
 	void AddConnection(Connection* pConn);
+
+//==========================================================================================================
+
+	void DeleteConnection(Connection* pConn);
+
 
 public: void Save();
 	//destructor
