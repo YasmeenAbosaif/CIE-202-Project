@@ -1,2 +1,37 @@
-﻿  ActionEDIT.cpp
+﻿  ActionAddBattery.cpp
+  ActionAddBulb.cpp
+  ActionAddBuzzer.cpp
+  ActionAddFuse.cpp
+  ActionAddGround.cpp
+  ActionAddRes.cpp
+  ActionAddSwitch.cpp
+  ActionConnect.cpp
+C:\Users\WIN10\Desktop\CIE-202-Project\Actions\ActionConnect.cpp(36,62): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\WIN10\Desktop\CIE-202-Project\Actions\ActionConnect.cpp(39,62): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\WIN10\Desktop\CIE-202-Project\Actions\ActionConnect.cpp(90,52): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\WIN10\Desktop\CIE-202-Project\Actions\ActionConnect.cpp(93,52): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  ActionDesignModeSwitch.cpp
+  ActionEDIT.cpp
+  ActionLabel.cpp
+  ActionSIM_MODE.cpp
+  ActionSave.cpp
+  ActionSelect.cpp
+  ApplicationManager.cpp
+  Battery.cpp
+  Bulb.cpp
+  Buzzer.cpp
+  Component.cpp
+  Connection.cpp
+  Generating Code...
+C:\Users\WIN10\Desktop\CIE-202-Project\Actions\ActionSelect.cpp(61): warning C4715: 'ActionSelect::Select_Connection': not all control paths return a value
+C:\Users\WIN10\Desktop\CIE-202-Project\Actions\ActionSelect.cpp(40): warning C4715: 'ActionSelect::Select_Component': not all control paths return a value
+  Compiling...
+  Fuse.cpp
+  Ground.cpp
+  Resistor.cpp
+  Switch.cpp
+  UI.cpp
+  main.cpp
+  Generating Code...
+C:\Users\WIN10\Desktop\CIE-202-Project\UI\UI.cpp(150): warning C4715: 'UI::GetUserAction': not all control paths return a value
   CIE202-Proj.vcxproj -> C:\Users\WIN10\Desktop\CIE-202-Project\x64\Debug\CIE202-Proj.exe
