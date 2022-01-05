@@ -139,15 +139,7 @@ public:
 
 	// Add label & edit 
 	void Label_name(string name, int x, int y);
-	// delete old label
-	void DeleteOldLabel(int x,int y);
-
-	// delete old conection
-	//void DeleteOldConnection(int x, int y , int x2 , int y2);
-
-	void UPDATES(int x, int y, string name);
-
-
+	
 	// Clear_Tool_Bar
 	void Clear_Tool_Bar()const;
 

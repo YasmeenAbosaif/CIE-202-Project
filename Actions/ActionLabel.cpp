@@ -30,23 +30,23 @@ void ActionLabel::Execute()
 	{
 		pUI->PrintMsg(" Write label for the component ");
 		string name = pUI->GetSrting();   // Get string is a function for getting label
-		pUI->ClearStatusBar();
 		component_->set_label(name);
+		component_->get_Label();
+		pUI->ClearStatusBar();
 		pUI->Label_name(name,Cx,Cy);
 	}
 	else if (connection_ != nullptr)
 	{
 		pUI->PrintMsg(" Write label for the connection ");
 		string name = pUI->GetSrting();   // Get string is a function for getting label
-		pUI->ClearStatusBar();
 		connection_->set_labelConn(name);
-		pUI->Label_name(name, Cx, Cy);
+		connection_->get_LabelConn();
 		pUI->ClearStatusBar();
+		pUI->Label_name(name, Cx, Cy);
 	}
 	else
 	{
 		pUI->PrintMsg(" Neither Component nor connection is selected ");
-		pUI->ClearStatusBar();
 	}
 }
 

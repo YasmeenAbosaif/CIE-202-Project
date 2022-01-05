@@ -404,30 +404,7 @@ void UI::Label_name(string name, int x, int y)
 	int MsgY = y;
 	pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial");
 	pWind->SetPen(MsgColor);
-	pWind->DrawString(MsgX - 30, MsgY - 30, name);
-}
-
-void UI::DeleteOldLabel(int x , int y )
-{
-	int MsgX = x ;
-	int MsgY = y ;
-	pWind->SetBrush(WHITE);
-	pWind->SetPen(WHITE);
-	pWind->DrawRectangle(MsgX - 50, MsgY - 50, MsgX+50, MsgY+50);
-}
-
-//void UI:: DeleteOldConnection(int x , int y , int x2 , int y2)
-//{
-//	pWind->SetPen(WHITE,15);
-//	pWind->DrawLine(x, y, x2, y2, FRAME);
-//}
-
-
-//for updates
-
-void UI::UPDATES(int x,int y ,string name)
-{
-	pWind->DrawString(x, y, name);
+	pWind->DrawString(MsgX , MsgY - 30, name);
 }
 
 //================================================Return to design mode ================================//

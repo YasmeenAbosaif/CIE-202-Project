@@ -109,10 +109,6 @@ void ApplicationManager::UpdateInterface()
 		for (int i = 0; i < CompCount; i++)
 		{
 			CompList[i]->Draw(pUI);
-			/*string name = CompList[i]->get_Label();
-			int x = pUI->
-			int y = pUI->
-			pUI->UPDATES(x, y, name);*/
 		}
 		for (int i = 0; i < ConnCount; i++)
 			ConnList[i]->Draw(pUI);

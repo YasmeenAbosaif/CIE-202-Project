@@ -7,7 +7,6 @@ class ActionEDIT : public Action
 private:
 	//Parameters for rectangular area to be occupied by the comp label
 	int Cx, Cy;	//Center point of the comp label
-	int x1, y1, x2, y2;
 public:
 	ActionEDIT(ApplicationManager* pApp);
 	virtual ~ActionEDIT(void);
