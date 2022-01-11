@@ -1,10 +1,10 @@
 #include "ActionLabel.h"
 #include "..\ApplicationManager.h"
+#include"ActionOptions.h"
 
 ActionLabel::ActionLabel(ApplicationManager* pApp) :Action(pApp)
 {
 }
-
 ActionLabel::~ActionLabel(void)
 {
 }
@@ -13,6 +13,8 @@ void ActionLabel::Execute()
 {
 	//Get a Pointer to the user Interfaces
 	UI* pUI = pManager->GetUI();
+	pUI->ClearDrawingArea();
+	pManager->UpdateInterface();
 	//Print Action Message
 	pUI->PrintMsg("Choose the needed component or connection");
 
@@ -48,6 +50,7 @@ void ActionLabel::Execute()
 	{
 		pUI->PrintMsg(" Neither Component nor connection is selected ");
 	}
+	pUI->ClearDrawingArea();
 }
 
 void ActionLabel::Undo()

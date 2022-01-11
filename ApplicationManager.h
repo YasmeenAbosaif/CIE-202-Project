@@ -5,20 +5,22 @@
 #include "UI\UI.h"
 #include "Actions\Action.h"
 #include "Components\Component.h"
+#include"Components/Connection.h"
 
 //Main class that manages everything in the application.
 class ApplicationManager
 {
 
-	enum { MaxCompCount = 200 };	//Max no of Components	
+	enum { MaxCompCount = 200 , MaxConnCount = 200};	//Max no of Components	
 
 private:
+	Component* copycomponent;   //pointer for the copied component
 	Component* comp1; Component* comp2;
 	int CompCount;		//Actual number of Components
 	int ConnCount;      //Actual number of Connections
 	Component* CompList[MaxCompCount];	//List of all Components (Array of pointers)
-	Connection* ConnList[MaxCompCount];	//List of all Connections (Array of pointers)
-
+	Connection* ConnList[MaxConnCount];	//List of all Connections (Array of pointers)
+	
 	UI* pUI; //pointer to the UI
 
 
@@ -69,11 +71,24 @@ public:
 //Adds a new connection to the list of connections
 	void AddConnection(Connection* pConn);
 
-//==========================================================================================================
+//=========================================== Delete component & connection ========================================
 
+	//void DeleteConnectionEDIT(Connection* pConn);
+	void DeleteComponent(Component* pComp);
 	void DeleteConnection(Connection* pConn);
+	Component* Select_Component(int x, int y);
+	void update_comp_connlist();
+//========================================= Copy ,  Paste , Cut ============================================
+	/*void setCopyCopmonent(Component* copiedcomp);
+	Component* getCopyCopmonent();*/
 
+	void Paste_Component(GraphicsInfo* r_GfxInfo);
 
+	void Copy_Component(Component* copiedcomp);
+
+	void Cut_Component(Component* copiedcomp, GraphicsInfo* r_GfxInfo);
+
+//====================================================Save==================================================
 public: void Save();
 	//destructor
 	~ApplicationManager();

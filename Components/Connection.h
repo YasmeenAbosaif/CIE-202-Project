@@ -43,8 +43,9 @@ public:
 	int ChooseComponentToDelete(Component* comp);
 	void Connection::setNewComponent(int n, Component* comp);
 //========================================================================================================
+
+
 //Destructor
+	
 	~Connection();
-
-
 };

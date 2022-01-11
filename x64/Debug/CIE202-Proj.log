@@ -1,3 +1,0 @@
-﻿  UI.cpp
-C:\Users\WIN10\Desktop\CIE-202-Project\UI\UI.cpp(150): warning C4715: 'UI::GetUserAction': not all control paths return a value
-  CIE202-Proj.vcxproj -> C:\Users\WIN10\Desktop\CIE-202-Project\x64\Debug\CIE202-Proj.exe

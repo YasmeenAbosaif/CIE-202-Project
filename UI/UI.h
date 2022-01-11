@@ -45,10 +45,7 @@ class UI
 		ITM_WIRE,       //Wire item in menu
 		ITM_BUZZER,
 		ITM_FUSE,
-		ITM_SAVE,
-		ITM_Label,    // Label item
-		ITM_Edit,   // Edit item
-		//TODO: Add more items names here
+		ITM_Options,
 		ITM_SIM_Switch,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
@@ -57,6 +54,16 @@ class UI
 
 	};
 
+	enum Options
+	{
+		ITM_Label,    // Label item
+		ITM_Edit,   // Edit item
+		ITM_Copy,
+		ITM_Paste,
+		ITM_Delete,
+		ITM_SAVE,
+		OptionsCount   //no. of options menu items ==> This should be the last line in this enum
+	};
 
 	enum SimMenuItem //The items of the simulation menu (you should add more items)
 	{
@@ -76,7 +83,7 @@ class UI
 		StatusBarHeight = 50,	//Status Bar Height
 		ToolBarHeight = 80,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
 		ToolItemWidth = 80,		//Width of each item in toolbar menu
-
+		ToolItemheight= 50,
 		//Arbitrary values, you can change as you wish
 		COMP_WIDTH = 100,		//Component Image width
 		COMP_HEIGHT = 30;		//Component Image height
@@ -145,6 +152,9 @@ public:
 
 	//================================================Return to design mode ===================================
 	void DesignModeSwitch();
+
+	//======================================Drop Menu for options==================================
+	void create_options_menu();
 	~UI();
 };
 #endif

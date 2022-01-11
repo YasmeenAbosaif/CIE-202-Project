@@ -105,6 +105,7 @@ GraphicsInfo* Connection::getconnection() const {
 	return m_pGfxInfo;
 }
 
+
 int Connection::ChooseComponentToDelete(Component* comp) {
 	if (Cmpnt1 == comp)
 		return 1;

@@ -186,6 +186,14 @@
     <ClCompile Include="Actions\ActionDesignModeSwitch.cpp" />
     <ClCompile Include="Actions\ActionSelect.cpp" />
     <ClCompile Include="Actions\ActionConnect.cpp" />
+    <ClCompile Include="Actions\ActionDelete.cpp" />
+    <ClCompile Include="Actions\ActionCopy.cpp" />
+    <ClCompile Include="Actions\ActionOptions.cpp" />
+    <ClCompile Include="Actions\ActionCut.cpp" />
+    <ClCompile Include="Actions\ActionPaste.cpp" />
+    <ClCompile Include="Actions\ActionSimulate.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h">
@@ -310,6 +318,14 @@
     <ClInclude Include="Actions\ActionDesignModeSwitch.h" />
     <ClInclude Include="Actions\ActionSelect.h" />
     <ClInclude Include="Actions\ActionConnect.h" />
+    <ClInclude Include="Actions\ActionDelete.h" />
+    <ClInclude Include="Actions\ActionCopy.h" />
+    <ClInclude Include="Actions\ActionOptions.h" />
+    <ClInclude Include="Actions\ActionCut.h" />
+    <ClInclude Include="Actions\ActionPaste.h" />
+    <ClInclude Include="Actions\ActionSimulate.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMUgraphicsLib\Manual.txt">

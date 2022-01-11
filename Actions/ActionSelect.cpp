@@ -26,7 +26,6 @@ Component* ActionSelect::Select_Component(int x, int y)
 	{
 		for (int i = 0; i < CompCount; i++)
 		{
-
 			if (CompList[i]->isInRegion(x, y, pUI))
 			{
 				CompList[i]->setSelected(true);
@@ -34,7 +33,6 @@ Component* ActionSelect::Select_Component(int x, int y)
 				return CompList[i];
 			}
 		}
-
 		return nullptr;
 	}
 }
@@ -49,7 +47,6 @@ Connection* ActionSelect::Select_Connection(int x, int y)
 		{
 			if (ConnList[i]->isInRegion(x, y, pUI))
 			{
-
 				ConnList[i]->setSelected(true);
 				ConnList[i]->Draw(pUI);
 				return ConnList[i];

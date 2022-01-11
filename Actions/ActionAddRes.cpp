@@ -28,10 +28,7 @@ void ActionAddRes::Execute()
 	pUI->PrintMsg("Enter the resistance value in Ohms: ");
 	string value = pUI->GetSrting();
 	
-pUI->ClearStatusBar();
-
-
-	
+	pUI->ClearStatusBar();
 	
 	GraphicsInfo * pGInfo= new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 	

@@ -5,6 +5,11 @@
 Ground::Ground(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 {}
 
+Ground::Ground(const Ground* CopiedGround)
+{
+	this->name = CopiedGround->name;
+}
+
 void Ground::Draw(UI* pUI)
 {
 	//Call output class and pass ground drawing info to it.

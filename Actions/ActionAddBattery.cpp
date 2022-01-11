@@ -31,8 +31,6 @@ void ActionAddBattery::Execute()
 
 	pUI->ClearStatusBar();
 
-
-
 	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 
 	//Calculate the rectangle Corners

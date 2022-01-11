@@ -5,6 +5,11 @@
 Fuse::Fuse(GraphicsInfo* f_GfxInfo) :Component(f_GfxInfo)
 {}
 
+Fuse::Fuse(const Fuse* CopiedFuse)   //The copy constructor
+{
+	this->name = CopiedFuse->name;
+}
+
 void Fuse::Draw(UI* pUI)
 {
 	//Call output class and pass battery drawing info to it.

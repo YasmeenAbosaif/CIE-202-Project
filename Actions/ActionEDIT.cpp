@@ -13,8 +13,10 @@ void ActionEDIT::Execute()
 {
 	//Get a Pointer to the user Interfaces
 	UI* pUI = pManager->GetUI();
+	pUI->ClearDrawingArea();
+	pManager->UpdateInterface();
 	//Print Action Message
-	pUI->PrintMsg("Choose the needed component or connection");
+	pUI->PrintMsg("Choose the needed component or connection to edit ");
 
 	//Get Center point of the area where the Comp label should be written
 	pUI->GetPointClicked(Cx, Cy);
@@ -87,7 +89,8 @@ void ActionEDIT::Execute()
 				pUI->GetPointClicked(Cx, Cy);
 				pUI->ClearStatusBar();
 				Comp2 = pManager->take_component_position(Cx, Cy);
-				if (Comp2 != nullptr) {
+				if (Comp2 != nullptr) 
+				{
 					Comp1->DeleteConnectionComponents(connection_);
 					if (Cx > Comp2->getComponentCenterX(pUI)) 
 					{
@@ -111,6 +114,7 @@ void ActionEDIT::Execute()
 		}
 		}
 	}
+	pUI->ClearDrawingArea();
 	pManager->UpdateInterface();
 }
 

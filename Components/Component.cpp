@@ -84,7 +84,7 @@ void Component::Save(int id)
 {
 }
 
-// ================================================= label & edit ============================================
+// ==============================Any related functions to label & edit =================================
 void Component::set_label(string name)
 {
 	m_Label = name;
@@ -106,14 +106,17 @@ bool Component::ISComponent(int x, int y) const
 	else
 		return false;
 }
-
-void Component::DeleteConnectionComponents(Connection* pCon) {
-	for (int i = 0; i < term1_conn_count; i++) {
-		if (term1_connections[i] == pCon)
+//Just deleting the link between component itself & connection 
+void Component::DeleteConnectionComponents(Connection* pCon) 
+{
+	for (int i = 0; i < term1_conn_count; i++) 
+	{
+		if (term1_connections[i] == pCon)     //for left 
 			term1_connections[i] = nullptr;
 	}
-	for (int i = 0; i < term2_conn_count; i++) {
-		if (term2_connections[i] == pCon)
+	for (int i = 0; i < term2_conn_count; i++)   
+	{
+		if (term2_connections[i] == pCon)    //for right
 			term2_connections[i] = nullptr;
 	}
 }
@@ -142,6 +145,36 @@ void Component::setValue(string newvalue)
 	value = newvalue;
 }
 //=============================================================================================================
+// for getting the terminals of the component to be deleted
+
+Connection** Component :: get_terminal(Terminal Term )  //We should declare new term
+{
+	switch (Term)
+	{
+	case RIGHT:
+		return term1_connections;
+		break;
+	case LEFT:
+		return term2_connections;
+		break;
+	default:
+		return nullptr;
+	}
+	
+}
+
+//===================================== for copying the component ==========================================
+//void Component::setCopyCopmonent(Component* selectedcopy)
+//{
+//	copycomponent = selectedcopy;
+//}
+//
+//Component* Component::getCopyCopmonent()
+//{
+//	return copycomponent;
+//}
+
+//==========================================================================================================
 
 Component::~Component()
 {

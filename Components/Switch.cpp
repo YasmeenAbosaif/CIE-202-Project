@@ -5,6 +5,11 @@
 Switch::Switch(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 {}
 
+Switch::Switch(const Switch* CopiedSwitch)   //The copy constructor
+{
+	this->name = CopiedSwitch->name;
+}
+
 void Switch::Draw(UI* pUI)
 {
 	//Call output class and pass resistor drawing info to it.

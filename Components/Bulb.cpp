@@ -5,6 +5,11 @@
 Bulb::Bulb(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 {}
 
+Bulb::Bulb(const Bulb* CopiedBulb)   //The copy constructor
+{
+	this->value = CopiedBulb->value;
+	this->name = CopiedBulb->name;
+}
 void Bulb::Draw(UI* pUI)
 {
 	//Call output class and pass resistor drawing info to it.

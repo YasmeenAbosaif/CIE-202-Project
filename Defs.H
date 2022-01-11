@@ -30,10 +30,16 @@ enum ActionType
 	UNDO,		//Undo the last Action preformed
 	REDO,		//Redo the last Action canceled
 
+	OPTIONS,  //drop menu including options user can choose
+
 	DSN_MODE,	//Switch to Design mode
 	SIM_MODE,	//Switch to Simulatiom mode
-
+	COPY,      //Copy the comonent 
+	PASTE,  // Paste the Component
+	CUT,
 	EXIT,		//Exit the application
+
+
 
 	SIMULATE,
 	AMMETER_,
@@ -41,6 +47,7 @@ enum ActionType
 
 	STATUS_BAR,		//A click on the status bar
 	DSN_TOOL,	//A click on an empty place in the design tool bar
+	OPTIONS_TOOL
 
 };
 

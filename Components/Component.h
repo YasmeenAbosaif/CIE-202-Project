@@ -15,9 +15,11 @@ protected:
 	//Each component has two ending terminals (term1, term2)
 	double term1_volt, term2_volt;	//voltage at terminals 1&2
 	bool selected = false;
-
+	//Component* copycomponent;   //pointer for the copied component
+	Connection* term1;
+	Connection* term2;
 	//Each terminal is connected to set of connections
-	Connection *term1_connections[MAX_CONNS]; //list of pointers to connections
+	Connection *term1_connections[MAX_CONNS]; //list of pointers to connections  for component
 	Connection *term2_connections[MAX_CONNS];
 
 	int term1_conn_count;	//actual no. of connections to each terminal
@@ -92,7 +94,15 @@ public:
 
 	virtual void setValue(string val);  // To let each component has its own value value
 
-//=============================================================================================================
+//======================for deletin terminals after deleting component ===============================================
+	
+	Connection** get_terminal(Terminal);
+
+//=================== for copying the component ======================
+	/*void setCopyCopmonent(Component* copiedcomp);
+	Component* getCopyCopmonent();*/
+
+	//virtual Component* copy(Component*copiedcomp) = 0;
 
 	Component();	
 	

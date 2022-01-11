@@ -81,6 +81,7 @@ string UI::GetSrting()
 ActionType UI::GetUserAction() const
 {
 	int x, y;
+
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 
 	if (AppMode == DESIGN)	//application is in design mode
@@ -104,25 +105,36 @@ ActionType UI::GetUserAction() const
 			case ITM_LAMP:   return     ADD_LAMP;
 			case ITM_BUZZER: return   ADD_BUZZER;
 			case ITM_FUSE:   return     ADD_FUSE;
-			case ITM_SAVE:   return         SAVE;
+			case ITM_Options: return  OPTIONS;
 			case ITM_SIM_Switch: return SIM_MODE;
-			case ITM_Label:	return ADD_Label;
-			case ITM_Edit: return EDIT_Label;
 			case ITM_EXIT:	return EXIT;
-
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
 			}
 		}
-
+		//[2] If user clicks on the OptionsMenu
+		else if (x >= 639 && x <= 719)
+		{
+			int ChoosenItemOrder = ( (y - ToolBarHeight) / ToolItemheight);
+			switch (ChoosenItemOrder)
+			{
+			case ITM_Label:	return ADD_Label;
+			case ITM_Edit: return EDIT_Label;
+			case ITM_Copy: return COPY;
+			case ITM_Paste: return PASTE;
+			case ITM_Delete: return DEL;
+			case ITM_SAVE: return SAVE;
+			default: return OPTIONS_TOOL;	//A click on empty place in Options toolbar
+			}
+		}
 		//[2] User clicks on the drawing area
 		if (y >= ToolBarHeight && y < height - StatusBarHeight)
 		{
 			return SELECT;	//user want to select/unselect a statement in the flowchart
 		}
-
 		//[3] User clicks on the status bar
 		return STATUS_BAR;
 	}
+	
 	else	//Application is in Simulation mode
 	{
 		//[1] If user clicks on the Toolbar
@@ -148,8 +160,6 @@ ActionType UI::GetUserAction() const
 	}
 
 }
-
-
 
 //======================================================================================//
 //								Output Functions										//
@@ -218,10 +228,8 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_BATTERY] = "images\\Menu\\Menu_Battery.jpg";
 	MenuItemImages[ITM_BUZZER] = "images\\Menu\\Menu_Buzzer.jpg";
 	MenuItemImages[ITM_FUSE] = "images\\Menu\\Menu_Fuse.jpg";
-	MenuItemImages[ITM_SAVE] = "images\\Menu\\Menu_Save.jpg";
 	MenuItemImages[ITM_SIM_Switch] = "images\\Menu\\Menu_SIM_Switch.jpg";
-	MenuItemImages[ITM_Label] = "images\\Menu\\Menu_Label.jpg";
-	MenuItemImages[ITM_Edit] = "images\\Menu\\Menu_Edit.jpg";
+	MenuItemImages[ITM_Options] = "images\\Menu\\Menu_Options.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -230,12 +238,34 @@ void UI::CreateDesignToolBar()
 	for (int i = 0; i < ITM_DSN_CNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i * ToolItemWidth, 0, ToolItemWidth, ToolBarHeight);
 
-
 	//Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);
 
 }
+// Creating Options Menu
+
+void UI::create_options_menu()
+{
+	string MenuOptionsItems[OptionsCount];
+	MenuOptionsItems[ITM_Label] = "images\\Menu\\Menu_Label.jpg";
+	MenuOptionsItems[ITM_Edit] = "images\\Menu\\Menu_Edit.jpg";
+	MenuOptionsItems[ITM_Copy] = "images\\Menu\\Menu_Copy.jpg";
+	MenuOptionsItems[ITM_Paste] = "images\\Menu\\Menu_Paste.jpg";
+	MenuOptionsItems[ITM_Delete] = "images\\Menu\\Menu_Delete.jpg";
+	MenuOptionsItems[ITM_SAVE] = "images\\Menu\\Menu_Save.jpg";
+	for (int i = 0; i < OptionsCount; i++)
+	{
+		pWind->DrawImage(MenuOptionsItems[i], 639, 80 + i * ToolItemheight, ToolItemWidth, ToolItemheight);
+		pWind->SetPen(BLUE, 3);
+		pWind->DrawLine(639, 80 + ToolItemheight * (i + 1), 639 , 80 + ToolItemheight * (i + 1));
+		pWind->DrawLine(639, 80 + ToolItemheight * (i + 1), 639+80 , 80 + ToolItemheight * (i + 1));
+		pWind->DrawLine(639, 80, 639, 80 + ToolItemheight * (i + 1));
+		pWind->DrawLine(639 + 80 , 80 , 639 + 80 , 80 + ToolItemheight * (i + 1));
+	}
+}
+
+//==========================================================================================================
 
 //======================================================================================//
 //								Components Drawing Functions							//
@@ -417,5 +447,6 @@ void UI::DesignModeSwitch()
 
 UI::~UI()
 {
+	delete this ; 
 	delete pWind;
 }
