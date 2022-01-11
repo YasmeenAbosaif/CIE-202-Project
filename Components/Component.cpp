@@ -80,8 +80,11 @@ Component::Component()
 
 }
 
-void Component::Save(int id)
+void Component::Save(ofstream& file, int id)
 {
+	file << "\t" << id + 1 << "\t" << m_Label << "\t" << getVal() << "\t" << m_pGfxInfo->PointsList[0].x
+		<< "\t" << m_pGfxInfo->PointsList[0].y << "\n";
+
 }
 
 // ==============================Any related functions to label & edit =================================
@@ -175,6 +178,14 @@ Connection** Component :: get_terminal(Terminal Term )  //We should declare new 
 //}
 
 //==========================================================================================================
+
+
+
+string Component::getVal() const
+{
+	return value;       //Note that value is the same as ResVal
+}
+
 
 Component::~Component()
 {

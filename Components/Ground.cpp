@@ -23,6 +23,8 @@ void Ground::Operate()
 {
 
 }
-void Ground:: Save(int id)
+void Ground:: Save(ofstream& file, int id)
 {
+	file << "Ana Ground. \t";
+	Component::Save(file, id);
 }

@@ -8,7 +8,7 @@ Battery::Battery(GraphicsInfo* b_GfxInfo) :Component(b_GfxInfo)
 
 Battery::Battery( const Battery* CopiedBattery)   //The copy constructor
 {
-	this->value = CopiedBattery->value;
+	this->setValue(CopiedBattery->getVal());
 	this->name = CopiedBattery->name;
 }
 
@@ -38,11 +38,15 @@ void Battery::Operate()
 {
 }
 
-void Battery::setValue(string val)
+/*
+void Battery::setEmf(string newEmf)
 {
-	value = val;
+	emf = newEmf;
 }
+*/ 
 
-void Battery::Save(int id )
+void Battery::Save(ofstream& file, int id)
 {
+	file << "Ana Battery. \t";
+	Component::Save(file, id);
 }

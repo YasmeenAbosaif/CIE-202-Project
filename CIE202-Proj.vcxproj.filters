@@ -194,6 +194,9 @@
     <ClCompile Include="Actions\ActionSimulate.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ActionAmmeter.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h">
@@ -324,6 +327,9 @@
     <ClInclude Include="Actions\ActionCut.h" />
     <ClInclude Include="Actions\ActionPaste.h" />
     <ClInclude Include="Actions\ActionSimulate.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAmmeter.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

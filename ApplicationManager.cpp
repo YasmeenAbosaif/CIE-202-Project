@@ -18,6 +18,7 @@
 #include"Actions/ActionCopy.h"
 #include"Actions/ActionCut.h"
 #include"Actions/ActionPaste.h"
+#include"Actions/ActionAmmeter.h"
 #include <fstream>
 
 ApplicationManager::ApplicationManager()
@@ -93,6 +94,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SIM_MODE:
 			pAct = new ActionSIM_MODE(this);
 			break;
+
+		case AMMETER_:
+			pAct = new ActionAmmeter(this);
+				break;
 		case DSN_MODE:
 			pAct = new ActionDesignModeSwitch(this);
 			break;
@@ -176,15 +181,19 @@ Connection** ApplicationManager::GetConnList()
 
 void ApplicationManager::Save()
 {
-	
 	ofstream outfile;
-	
+
 	outfile.open("test.txt");
 	//outfile << 1 << "\n" << 2;
-	outfile << CompCount << "\n";
-	for(int i =0; i<CompCount; i++)
+	outfile << "#Components: " << CompCount << "\n";
+	for (int i = 0; i < CompCount; i++)
 	{
-		CompList[i]->Save(i);
+		CompList[i]->Save(outfile, i);
+	}
+	outfile << "#Connections: " << ConnCount << "\n";
+	for (int i = 0; i < ConnCount; i++)
+	{
+		ConnList[i]->Save(outfile, i);
 	}
 	outfile.close();
 

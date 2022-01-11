@@ -44,6 +44,7 @@ void ActionAddBuzzer::Execute()
 
 	Buzzer* pBz = new Buzzer(pGInfo);
 	pManager->AddComponent(pBz);
+	pBz->setValue(buzzer_resistance);
 }
 
 void ActionAddBuzzer::Undo()

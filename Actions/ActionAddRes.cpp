@@ -43,6 +43,7 @@ void ActionAddRes::Execute()
 	 
 	Resistor* pR = new Resistor(pGInfo);
 	pManager->AddComponent(pR);
+	pR->setValue(value);
 }
 
 void ActionAddRes::Undo()

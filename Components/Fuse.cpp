@@ -24,7 +24,8 @@ void Fuse::Operate()
 {
 
 }
-void Fuse:: Save(int id)
+void Fuse:: Save(ofstream& file, int id)
 {
-
+	file << "Ana Fuse. \t";
+	Component::Save(file, id);
 }

@@ -32,7 +32,7 @@ public:
 	bool isInRegion(int x, int y, UI* pUI);
 
 	virtual void Draw(UI* );	//for connection to Draw itself
-	virtual void Save(int id);
+	virtual void Save(ofstream& file, int id);
 	 
 
 //================================	setters and getters for connections================================

@@ -117,6 +117,7 @@
     <ClCompile Include="Actions\ActionAddGround.cpp" />
     <ClCompile Include="Actions\ActionAddRes.cpp" />
     <ClCompile Include="Actions\ActionAddSwitch.cpp" />
+    <ClCompile Include="Actions\ActionAmmeter.cpp" />
     <ClCompile Include="Actions\ActionConnect.cpp" />
     <ClCompile Include="Actions\ActionCopy.cpp" />
     <ClCompile Include="Actions\ActionCut.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="Actions\ActionAddGround.h" />
     <ClInclude Include="Actions\ActionAddRes.h" />
     <ClInclude Include="Actions\ActionAddSwitch.h" />
+    <ClInclude Include="Actions\ActionAmmeter.h" />
     <ClInclude Include="Actions\ActionConnect.h" />
     <ClInclude Include="Actions\ActionCopy.h" />
     <ClInclude Include="Actions\ActionCut.h" />

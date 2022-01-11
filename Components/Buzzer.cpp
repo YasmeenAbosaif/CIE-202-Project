@@ -23,7 +23,8 @@ void Buzzer::Operate()
 {
 
 }
-void Buzzer::Save(int id)
+void Buzzer::Save(ofstream& file, int id)
 {
-
+	file << "Ana Buzzer. \t";
+	Component::Save(file, id);
 }

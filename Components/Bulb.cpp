@@ -7,7 +7,7 @@ Bulb::Bulb(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 
 Bulb::Bulb(const Bulb* CopiedBulb)   //The copy constructor
 {
-	this->value = CopiedBulb->value;
+	this->setValue(CopiedBulb->getVal());
 	this->name = CopiedBulb->name;
 }
 void Bulb::Draw(UI* pUI)
@@ -24,11 +24,9 @@ void Bulb::Operate()
 
 }
 
-void Bulb::setValue(string val)
-{
-	value = val;
-}
 
-void Bulb:: Save(int id) 
+void Bulb:: Save(ofstream& file, int id)
 {
+	file << "Ana Bulb. \t";
+	Component::Save(file, id);
 }

@@ -44,6 +44,7 @@ void ActionAddBattery::Execute()
 
 	Battery* pB = new Battery(pGInfo);
 	pManager->AddComponent(pB);
+	pB->setValue(emf_value);     //Dont forget to edit this madness!
 }
 
 void ActionAddBattery::Undo()

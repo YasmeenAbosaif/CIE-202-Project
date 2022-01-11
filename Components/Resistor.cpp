@@ -8,7 +8,7 @@ Resistor::Resistor(GraphicsInfo *r_GfxInfo):Component(r_GfxInfo)
 Resistor::Resistor(const Resistor* CopiedResistor ) //The copy constructor
 {
 	this->m_pGfxInfo = new GraphicsInfo (2);
-	this->value = CopiedResistor->value;
+	this->setValue(CopiedResistor->getVal());
 	this->name = CopiedResistor->name;
 }
 
@@ -26,13 +26,10 @@ void Resistor::Operate()
 
 }
 
-void Resistor::setValue(string val)
-{
-	value = val;
-}
 
 
-void Resistor::Save(int id)
+void Resistor::Save(ofstream& file, int id)
 {
-	
+	file << "Ana Resistor. \t";
+	Component::Save(file, id);
 }

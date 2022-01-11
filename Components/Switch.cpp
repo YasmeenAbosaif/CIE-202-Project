@@ -24,7 +24,8 @@ void Switch::Operate()
 
 }
 
-void Switch:: Save(int id)
+void Switch:: Save(ofstream& file, int id)
 {
-
+	file << "Ana Switch. \t";
+	Component::Save(file, id);
 }

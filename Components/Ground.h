@@ -9,6 +9,6 @@ public:
 	Ground(const Ground* CopiedGround);
 	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws ground
-	virtual void Save(int id);
+	virtual void Save(ofstream& file, int id);
 
 };

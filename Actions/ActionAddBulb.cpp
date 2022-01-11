@@ -44,6 +44,7 @@ void ActionAddBulb::Execute()
 
 	Bulb* pBu = new Bulb(pGInfo);
 	pManager->AddComponent(pBu);
+	pBu->setValue(bulb_resistance);
 }
 
 void ActionAddBulb::Undo()

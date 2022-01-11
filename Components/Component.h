@@ -4,12 +4,14 @@
 #include "..\Defs.h"
 #include "..\UI\UI.h"
 #include "Connection.h"
+#include <fstream>
 
 //Base class for all components (resistor, capacitor,....etc) .
 class Component
 {
 private:
-	string value;
+	string value = "0";            //To be resistance for all components except for the battery it's emf;
+	//string resVal="0";
 	string m_Label;
 protected:
 	//Each component has two ending terminals (term1, term2)
@@ -52,7 +54,7 @@ public:
 	virtual void Operate() = 0;	//Calculates the output voltage according to the inputs
 	virtual void Draw(UI* ) = 0;	//for each component to Draw itself
 	
-	virtual void Save(int id) = 0;    //**********TESTING***********//
+	virtual void Save(ofstream& file, int id);    //**********TESTING***********//
 
 
 	Terminal whichTerminal(int x); //determinw which terminale is selected
@@ -108,6 +110,10 @@ public:
 	
 	//Destructor must be virtual
 	virtual ~Component();
+
+	//void setResVal( string val);
+	
+	string getVal() const;
 };
 
 #endif

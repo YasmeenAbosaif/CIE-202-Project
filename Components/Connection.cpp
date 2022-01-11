@@ -72,7 +72,7 @@ void Connection::Draw(UI* pUI)
 {
 	pUI->DrawConnection(*m_pGfxInfo, selected);
 }
-void Connection:: Save(int id)
+void Connection:: Save(ofstream& file, int id)
 {
 
 }

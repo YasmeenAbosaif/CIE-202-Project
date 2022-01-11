@@ -1,1 +1,4 @@
-4
+#Components: 2
+Ana Resistor. 		1		10	254	218
+Ana Battery. 		2		50	359	214
+#Connections: 0
