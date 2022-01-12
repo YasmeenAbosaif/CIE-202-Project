@@ -50,3 +50,8 @@ void Battery::Save(ofstream& file, int id)
 	file << "Ana Battery. \t";
 	Component::Save(file, id);
 }
+
+string Battery::getType() const
+{
+	return type;
+}

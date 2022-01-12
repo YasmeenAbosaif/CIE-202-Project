@@ -30,3 +30,8 @@ void Bulb:: Save(ofstream& file, int id)
 	file << "Ana Bulb. \t";
 	Component::Save(file, id);
 }
+
+string Bulb::getType() const
+{
+	return type;
+}

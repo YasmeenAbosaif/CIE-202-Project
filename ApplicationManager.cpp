@@ -19,6 +19,7 @@
 #include"Actions/ActionCut.h"
 #include"Actions/ActionPaste.h"
 #include"Actions/ActionAmmeter.h"
+#include"Actions/ActionVoltmeter.h"
 #include <fstream>
 
 ApplicationManager::ApplicationManager()
@@ -98,6 +99,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case AMMETER_:
 			pAct = new ActionAmmeter(this);
 				break;
+		case VOLTMETER_:
+			pAct = new ActionVoltmeter(this);
+			break;
 		case DSN_MODE:
 			pAct = new ActionDesignModeSwitch(this);
 			break;

@@ -4,7 +4,10 @@
 	class Bulb :public Component
 {
 		string name;
+
 public:
+	string getType() const;
+	string type = "Bulb";
 	Bulb(GraphicsInfo* r_GfxInfo);
 	Bulb(const Bulb* CopiedBulb);  //const to avoid changing , "&" to avoid memory leakage 
 	virtual void Operate();	//Calculates the volt on both terminals

@@ -33,3 +33,8 @@ void Resistor::Save(ofstream& file, int id)
 	file << "Ana Resistor. \t";
 	Component::Save(file, id);
 }
+
+string Resistor::getType() const
+{
+	return type;
+}

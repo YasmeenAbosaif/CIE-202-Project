@@ -28,3 +28,8 @@ void Buzzer::Save(ofstream& file, int id)
 	file << "Ana Buzzer. \t";
 	Component::Save(file, id);
 }
+
+string Buzzer::getType() const
+{
+	return type;
+}

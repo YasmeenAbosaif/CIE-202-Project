@@ -25,6 +25,7 @@ class Connection
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public:
+
 	Connection(GraphicsInfo *r_GfxInfo, Component *cmp1=nullptr, Component *cmp2=nullptr);
 
 	void setSelected(bool x);

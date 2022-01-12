@@ -8,6 +8,8 @@ class Battery :public Component
 	string name;
 	string emf = "0";
 public:
+	string getType() const;
+	const string type = "Battery";
 	Battery(GraphicsInfo* r_GfxInfo);   //Contructor
 	Battery(const Battery* CopiedBattery);  //const to avoid changing , "&" to avoid memory leakage 
 	virtual void Operate();	//Calculates the volt on both terminals

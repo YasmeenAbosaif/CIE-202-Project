@@ -21,11 +21,14 @@ void Switch::Draw(UI* pUI)
 
 void Switch::Operate()
 {
-
 }
 
 void Switch:: Save(ofstream& file, int id)
 {
 	file << "Ana Switch. \t";
 	Component::Save(file, id);
+}
+string Switch::getType() const
+{
+	return type;
 }

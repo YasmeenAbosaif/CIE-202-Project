@@ -29,3 +29,8 @@ void Fuse:: Save(ofstream& file, int id)
 	file << "Ana Fuse. \t";
 	Component::Save(file, id);
 }
+
+string Fuse::getType() const
+{
+	return type;
+}

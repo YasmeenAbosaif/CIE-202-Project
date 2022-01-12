@@ -4,7 +4,10 @@
 class Switch :public Component
 {
 	string name;
+	string voltageAcross;
 public:
+	string type = "Switch";
+	string getType() const;
 	Switch(GraphicsInfo* r_GfxInfo);
 	Switch(const Switch* CopiedSwitch);  //const to avoid changing 
 	virtual void Operate();	//Calculates the volt on both terminals

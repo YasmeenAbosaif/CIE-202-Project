@@ -78,6 +78,7 @@ void Connection:: Save(ofstream& file, int id)
 }
 
 
+
 //===============	setters and getters for connections for labeling and editing ===========================
 void Connection::set_labelConn(string name) 
 {

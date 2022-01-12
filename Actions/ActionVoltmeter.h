@@ -4,10 +4,13 @@
 #include "../Components/Connection.h"
 #include "ActionSelect.h"
 
-class ActionAmmeter : public Action
+class ActionVoltmeter : public Action
 {
 private:
-	double total_current=0;
+		double emf = 0;
+	double Rtotal = 0;
+	double voltage = 10;
+	double total_current = 0;
 
 	int Cx, Cy; //coordinates of the clicked point
 	Component* Cmpnt = nullptr;
@@ -22,13 +25,14 @@ private:
 	Connection** ConnList;
 
 public:
+	void calculateVoltage();
 	void calculateCurrent();
-	double getCurrent() const;
-	ActionAmmeter(ApplicationManager* pApp);
+	double getVoltage() const;
+	ActionVoltmeter(ApplicationManager* pApp);
 	virtual void Execute();
 	void selectComponent(int x, int y);
 	virtual void Undo();
 	virtual void Redo();
-	virtual ~ActionAmmeter(void);
+	virtual ~ActionVoltmeter(void);
 };
 

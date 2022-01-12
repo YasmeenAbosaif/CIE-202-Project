@@ -28,3 +28,7 @@ void Ground:: Save(ofstream& file, int id)
 	file << "Ana Ground. \t";
 	Component::Save(file, id);
 }
+string Ground::getType() const
+{
+	return type;
+}

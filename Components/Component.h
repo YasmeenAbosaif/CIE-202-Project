@@ -45,6 +45,11 @@ protected:
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public:
+	virtual string getType() const = 0;
+	                        
+	//string type;       ///TEST
+	bool open;		  ///TEST
+
 	Component(GraphicsInfo *r_GfxInfo);
 	//void setTerm1Volt(double v);		//sets the voltage at terminal1
 	//void setTerm2Volt(double v);		//sets the voltage at terminal2
