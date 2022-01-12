@@ -180,10 +180,18 @@ Connection** Component :: get_terminal(Terminal Term )  //We should declare new 
 //==========================================================================================================
 
 
+bool Component::SeriesConnCheck()  //validation check
+{
+	if (term1_conn_count < 2 && term2_conn_count < 2)
+		return true;
+	else
+		return false;
+}
+
 
 string Component::getVal() const
 {
-	return value;       //Note that value is the same as ResVal
+	return value;       //Note that its resistance for all except battery
 }
 
 

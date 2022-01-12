@@ -1,12 +1,34 @@
+/*
 #include "ActionSimulate.h"
 #include "..\ApplicationManager.h"
-
+#include "..\Components\Bulb.h"
+#include "..\Components\Switch.h"
 ActionSimulate::ActionSimulate(ApplicationManager* pApp) :Action(pApp)
 {
+	pUI = pApp->GetUI();
+
+	CompCount = pApp->GetCompCount();
+	ConnCount = pApp->GetConnCount();
+
+	CompList = pApp->GetCompList();
+	ConnList = pApp->GetConnList();
 }
 
 ActionSimulate::~ActionSimulate(void)
 {
+}
+
+void ActionSimulate::BulbCheck()
+{
+	for (int i = 0; i < CompCount; i++)
+	{
+		if ((CompList[i]->getType()) == "Switch")
+		{
+			Switch* Sptr = dynamic_cast<Switch*>(CompList[i]);
+			bool op= Sptr->getOpen();
+		}
+	}
+
 }
 
 void ActionSimulate::Execute()
@@ -16,29 +38,10 @@ void ActionSimulate::Execute()
 	UI* pUI = pManager->GetUI();
 
 	//Print Action Message
-	pUI->PrintMsg("Simulating: Please choose a tool: ");
+	pUI->PrintMsg("Simulating:");
 
-	//Get Center point of the area where the Comp should be drawn
-	pUI->GetPointClicked(x_click, y_click);
+	BulbCheck();
 
-	//Clear Status Bar
-	pUI->ClearStatusBar();
-
-	//Read the resistance value
-	/*pUI->PrintMsg("Enter the resistance value in Ohms: ");
-	string value = pUI->GetSrting();*/
-
-	pUI->ClearStatusBar();
-
-	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
-
-
-	/*
-	pGInfo->PointsList[0].x = Cx - compWidth / 2;
-	pGInfo->PointsList[0].y = Cy - compHeight / 2;
-	pGInfo->PointsList[1].x = Cx + compWidth / 2;
-	pGInfo->PointsList[1].y = Cy + compHeight / 2;
-	*/
 
 }
 
@@ -48,3 +51,4 @@ void ActionSimulate::Undo()
 void ActionSimulate::Redo()
 {}
 
+*/

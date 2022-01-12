@@ -7,8 +7,8 @@
 class ActionVoltmeter : public Action
 {
 private:
-		double emf = 0;
-	double Rtotal = 0;
+	//double emf = 0;
+	//double Rtotal = 0;
 	double voltage = 10;
 	double total_current = 0;
 

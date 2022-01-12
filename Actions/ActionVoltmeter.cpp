@@ -16,7 +16,8 @@ ActionVoltmeter::ActionVoltmeter(ApplicationManager* pApp) : Action(pApp)
 
 void ActionVoltmeter:: calculateCurrent()
 {
-
+	double emf = 0;
+	double Rtotal = 0;
 
 	for (int i = 0; i < CompCount; i++)
 	{
@@ -31,19 +32,19 @@ void ActionVoltmeter::calculateVoltage()
 	{
 	for (int i = 0; i < CompCount; i++)
 	{
-		if ((CompList[i]->getType()) == "Resistor")     voltage = (total_current * stod(CompList[i]->getVal()));
-		else if ((CompList[i]->getType()) == "Bulb")    voltage = total_current * stod(CompList[i]->getVal());
-		else if ((CompList[i]->getType()) == "Buzzer")  voltage = total_current * stod(CompList[i]->getVal());
+		if ((CompList[i]->getType()) == "Resistor")     voltage = (total_current * (stod(CompList[i]->getVal())));
+		else if ((CompList[i]->getType()) == "Bulb")    voltage =(total_current * (stod(CompList[i]->getVal())));
+		else if ((CompList[i]->getType()) == "Buzzer")  voltage = (total_current * (stod(CompList[i]->getVal())));
 		else if ((CompList[i]->getType()) == "Switch") 
 		{
 			if (!(CompList[i]->open))
 				voltage = 0;
-			else
-				voltage = emf;
+	//		else
+		//		voltage = emf;
 		} 
 		else if ((CompList[i]->getType()) == "Battery") voltage = stod(CompList[i]->getVal()); //That's not so accurate, in case of multiple Batteries.
 		else if ((CompList[i]->getType()) == "Fuse")    voltage = 0;
-		else if ((CompList[i]->getType()) == "Ground")  voltage = emf;
+		//else if ((CompList[i]->getType()) == "Ground")  voltage = emf;
 
 	}
 }

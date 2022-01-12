@@ -12,9 +12,15 @@ ActionSIM_MODE::~ActionSIM_MODE(void)
 void ActionSIM_MODE::Execute()
 {
 	UI* pUI = pManager->GetUI();
-	pUI->SIM_MODE_Button();
+	bool valid=1; 
+	if (valid)
+	{
+		pUI->SIM_MODE_Button();
 
-	pUI->ClearStatusBar();
+		pUI->ClearStatusBar();
+	}
+	else pUI->PrintMsg("CIRCUIT INVALID!");
+
 }
 void ActionSIM_MODE::Undo()
 {}

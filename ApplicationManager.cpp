@@ -439,6 +439,110 @@ void ApplicationManager::Cut_Component(Component* copiedcomp , GraphicsInfo* r_G
 	}
 }
 
+bool ApplicationManager::circuitValidation()
+{
+	pUI = GetUI();
+	int Groundcount = 0;
+	string message;
+
+	int error1count = 0;
+	int error2count = 0;
+	int error3count = 0;
+
+	bool check1 = false;  //check series connection
+	bool check2 = false;  //check that there is at least one ground
+	bool check3 = false;  //check closed loop
+
+	string error1 = " ERROR:All connections must be series   ";
+	string error2 = " ERROR:The circuit must contain only one Ground   ";
+	string error3 = " ERROR:The circuit must be closed   ";
+
+	if (CompCount)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			if (error1count == 0) //------------check1
+			{
+				try
+				{
+					if (!(CompList[i]->SeriesConnCheck()))
+					{
+						check1 = false;
+						error1count++;
+						throw error1;
+					}
+					else
+						check1 = true;
+				}
+				catch (string error1)
+				{
+					message = message + error1;
+				}
+			}
+
+			if (error2count == 0) //------------check2
+			{
+				Ground* Groundptr = dynamic_cast<Ground*>(CompList[i]);
+
+				if (Groundptr != nullptr)
+					Groundcount = Groundcount + 1;
+				try
+				{
+					if (Groundcount != 1)
+					{
+						check2 = false;
+						error2count++;
+						throw error2;
+					}
+					else
+						check2 = true;
+				}
+				catch (string error2)
+				{
+					message = message + error2;
+				}
+			}
+
+			if (error3count == 0)    //------------check3
+			{
+				Switch* Switchptr = dynamic_cast<Switch*>(CompList[i]);
+				if (Switchptr != nullptr)
+				{
+					try
+					{
+						if (!(Switchptr->getOpen()) && check1 == false)  ///getstatus() function is not yet implemented in UI class or selet switch
+						{
+							check3 = false;
+							error3count++;
+							throw error3;
+						}
+
+						else
+							check3 = true;
+					}
+					catch (string error3)
+					{
+						message = message + error3;
+					}
+				}
+			}
+		}
+
+		if (message.empty())
+			return true;
+		else
+		{
+			pUI->PrintMsg(message);
+			return false;
+		}
+	}
+	else
+	{
+		pUI->PrintMsg("ERROR:can't simulate without a given circuit");
+		return false;
+	}
+}
+
 // Function for Paste copy
 
 void ApplicationManager :: Paste_Component(GraphicsInfo* r_GfxInfo)

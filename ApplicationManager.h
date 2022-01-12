@@ -90,7 +90,10 @@ public:
 
 //====================================================Save==================================================
 public: void Save();
+
+	  bool circuitValidation();
 	//destructor
+
 	~ApplicationManager();
 };
 

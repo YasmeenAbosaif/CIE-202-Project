@@ -5,6 +5,7 @@ class Switch :public Component
 {
 	string name;
 	string voltageAcross;
+	bool open = 0;
 public:
 	string type = "Switch";
 	string getType() const;
@@ -13,5 +14,7 @@ public:
 	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the switch
 	virtual void Save(ofstream& file, int id);
-	bool open = 0;
+	bool getOpen();
+
+	
 };

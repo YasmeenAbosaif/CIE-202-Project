@@ -115,6 +115,7 @@
     <ClCompile Include="Actions\ActionAddBuzzer.cpp" />
     <ClCompile Include="Actions\ActionAddFuse.cpp" />
     <ClCompile Include="Actions\ActionAddGround.cpp" />
+    <ClCompile Include="Actions\ActionAddModule.cpp" />
     <ClCompile Include="Actions\ActionAddRes.cpp" />
     <ClCompile Include="Actions\ActionAddSwitch.cpp" />
     <ClCompile Include="Actions\ActionAmmeter.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="Actions\ActionAddBuzzer.h" />
     <ClInclude Include="Actions\ActionAddFuse.h" />
     <ClInclude Include="Actions\ActionAddGround.h" />
+    <ClInclude Include="Actions\ActionAddModule.h" />
     <ClInclude Include="Actions\ActionAddRes.h" />
     <ClInclude Include="Actions\ActionAddSwitch.h" />
     <ClInclude Include="Actions\ActionAmmeter.h" />

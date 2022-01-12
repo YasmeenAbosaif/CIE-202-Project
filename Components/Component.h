@@ -119,6 +119,7 @@ public:
 	//void setResVal( string val);
 	
 	string getVal() const;
+	bool SeriesConnCheck();
 };
 
 #endif

@@ -35,3 +35,7 @@ string Bulb::getType() const
 {
 	return type;
 }
+bool Bulb:: getOn()
+{
+	return on;
+}

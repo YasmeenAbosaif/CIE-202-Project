@@ -32,3 +32,8 @@ string Switch::getType() const
 {
 	return type;
 }
+
+bool Switch::getOpen()
+{
+	return open;
+}
