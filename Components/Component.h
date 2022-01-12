@@ -120,6 +120,7 @@ public:
 	
 	string getVal() const;
 	bool SeriesConnCheck();
+	bool closedloopCheck();
 };
 
 #endif

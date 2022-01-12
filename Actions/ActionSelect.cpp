@@ -1,5 +1,6 @@
 #include "ActionSelect.h"
 #include "..\ApplicationManager.h"
+#include "..\Components\Switch.h"
 
 ActionSelect::ActionSelect(ApplicationManager* pApp, int Cx, int Cy) :Action(pApp)
 {
@@ -29,6 +30,14 @@ Component* ActionSelect::Select_Component(int x, int y)
 			if (CompList[i]->isInRegion(x, y, pUI))
 			{
 				CompList[i]->setSelected(true);
+				Switch* Switchptr = dynamic_cast<Switch*>(CompList[i]);
+				if (Switchptr != nullptr)
+				{
+					if (Switchptr->getOpen())
+						Switchptr->setOpen(false);
+					else
+						Switchptr->setOpen(true);
+				}
 				CompList[i]->Draw(pUI);
 				return CompList[i];
 			}

@@ -22,6 +22,8 @@
 #include"Actions/ActionVoltmeter.h"
 #include"Actions/ActionAmmeter.h"
 #include"Actions/ActionClose.h"
+#include"Actions/ActionSimulate.h"
+
 #include <fstream>
 
 ApplicationManager::ApplicationManager()
@@ -96,6 +98,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case SIM_MODE:
 			pAct = new ActionSIM_MODE(this);
+			break;
+		case SIMULATE:
+			pAct = new ActionSimulate(this);
 			break;
 		case AMMETER_:
 			pAct = new ActionAmmeter(this);
@@ -400,22 +405,22 @@ Component* ApplicationManager::getCopyCopmonent()
 }
 
 //=========================================================================================================//
+
 bool ApplicationManager::circuitValidation()
 {
 	pUI = GetUI();
-	int Groundcount = 0;
 	string message;
 
 	int error1count = 0;
-	int error2count = 0;
+	int Groundcount = 0;
 	int error3count = 0;
 
-	bool check1 = false;  //check series connection
-	bool check2 = false;  //check that there is at least one ground
-	bool check3 = false;  //check closed loop
+	//check1 series connection
+	//check2 that there is at least one ground
+	//check3 closed loop
 
 	string error1 = " ERROR:All connections must be series   ";
-	string error2 = " ERROR:The circuit must contain only one Ground   ";
+	string error2 = " ERROR:The circuit must contain one Ground   ";
 	string error3 = " ERROR:The circuit must be closed   ";
 
 	if (CompCount)
@@ -424,70 +429,54 @@ bool ApplicationManager::circuitValidation()
 		{
 			if (error1count == 0) //------------check1
 			{
-				try
+				if (!(CompList[i]->SeriesConnCheck()))
 				{
-					if (!(CompList[i]->SeriesConnCheck()))
-					{
-						check1 = false;
-						error1count++;
-						throw error1;
-					}
-					else
-						check1 = true;
-				}
-				catch (string error1)
-				{
+					error1count++;
 					message = message + error1;
+
 				}
+
 			}
 
-			if (error2count == 0) //------------check2
+
+
+			Ground* Groundptr = dynamic_cast<Ground*>(CompList[i]);//------------check2
+
+			if (Groundptr != nullptr)
+				Groundcount++;
+
+
+
+
+			//------------check3
+
+			if (error3count == 0 && !(CompList[i]->closedloopCheck()))  ///getOpen() function is not yet implemented in UI class or selet switch
 			{
-				Ground* Groundptr = dynamic_cast<Ground*>(CompList[i]);
-
-				if (Groundptr != nullptr)
-					Groundcount = Groundcount + 1;
-				try
-				{
-					if (Groundcount != 1)
-					{
-						check2 = false;
-						error2count++;
-						throw error2;
-					}
-					else
-						check2 = true;
-				}
-				catch (string error2)
-				{
-					message = message + error2;
-				}
+				error3count++;
+				message = message + error3;
 			}
 
-			if (error3count == 0)    //------------check3
+			Switch* Switchptr = dynamic_cast<Switch*>(CompList[i]);
+			if (error3count == 0 && Switchptr != nullptr)
 			{
-				Switch* Switchptr = dynamic_cast<Switch*>(CompList[i]);
-				if (Switchptr != nullptr)
-				{
-					try
-					{
-						if (!(Switchptr->getOpen()) && check1 == false)  ///getstatus() function is not yet implemented in UI class or selet switch
-						{
-							check3 = false;
-							error3count++;
-							throw error3;
-						}
 
-						else
-							check3 = true;
-					}
-					catch (string error3)
-					{
-						message = message + error3;
-					}
+
+				if (Switchptr->getOpen())  ///getOpen() function is not yet implemented in UI class or selet switch
+				{
+					error3count++;
+					message = message + error3;
 				}
+
 			}
+
 		}
+
+		if (Groundcount != 1)//----------------check2
+		{
+			message = message + error2;
+		}
+
+
 
 		if (message.empty())
 			return true;
@@ -502,6 +491,7 @@ bool ApplicationManager::circuitValidation()
 		pUI->PrintMsg("ERROR:can't simulate without a given circuit");
 		return false;
 	}
+
 }
 
 

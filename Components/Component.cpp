@@ -195,6 +195,13 @@ string Component::getVal() const
 }
 
 
+bool Component::closedloopCheck()  //validation check
+{
+	if (term1_conn_count != 0 && term2_conn_count != 0)
+		return true;
+	else
+		return false;
+}
 
 Component::~Component()
 {

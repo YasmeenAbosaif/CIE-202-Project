@@ -76,10 +76,12 @@ void ActionConnect::Execute()
 				Cmpnt2 = CompList[i];
 		}
 
-		if (Cmpnt1 == nullptr || Cmpnt2 == nullptr)
+		if(Cmpnt1 == nullptr || Cmpnt2 == nullptr)
 			pUI->PrintMsg("Try Again! please select two components to connect them");
+		else if (Cmpnt1 == Cmpnt2)
+		pUI->PrintMsg("Try Again! please select two DIFFERENT components to connect them");
 
-	} while (Cmpnt1 == nullptr || Cmpnt2 == nullptr);
+	} while (Cmpnt1 == nullptr || Cmpnt2 == nullptr || Cmpnt1 == Cmpnt2);
 
 
 	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx endpoints info of the connection

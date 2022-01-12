@@ -503,6 +503,8 @@ void UI::MouseState_Move(int	CX, int CY)
 
 UI::~UI()
 {
-	delete this ; 
+	if(this)
+	delete this;
+	if(pWind)
 	delete pWind;
 }

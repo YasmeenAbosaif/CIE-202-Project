@@ -21,20 +21,18 @@ ActionSimulate::~ActionSimulate(void)
 void ActionSimulate::BulbCheck()
 {
 	bool op = 0;
-	bool allclosed=1;
-	
-	while (allclosed)
+	bool allclosed = 1;
+
+	for (int i = 0; i < CompCount; i++)
 	{
-		for (int i = 0; i < CompCount; i++)
+		if ((CompList[i]->getType()) == "Switch")
 		{
-			if ((CompList[i]->getType()) == "Switch")
-			{
-				Switch* Sptr = dynamic_cast<Switch*>(CompList[i]);
-				if (Sptr)	  op = Sptr->getOpen();
-				if (Sptr)     allclosed = 0;
-			}
+			Switch* Sptr = dynamic_cast<Switch*>(CompList[i]);
+			if (Sptr)	  op = Sptr->getOpen();
+			if (Sptr->getOpen())     allclosed = 0;
 		}
 	}
+
 
 	if (allclosed)
 	{
@@ -43,7 +41,12 @@ void ActionSimulate::BulbCheck()
 			if ((CompList[i]->getType()) == "Bulb")
 			{
 				Bulb* Bptr = dynamic_cast<Bulb*>(CompList[i]);
-				if (Bptr) { Bptr->setOn(1); }
+				if (Bptr)
+				{
+					{ Bptr->setOn(1);
+					pManager->UpdateInterface();
+					}
+				}
 			}
 		}
 	}
