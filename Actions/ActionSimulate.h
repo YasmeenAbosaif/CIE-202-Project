@@ -28,4 +28,5 @@ public:
 	virtual void Redo();
 	virtual ~ActionSimulate(void);
 	void BulbCheck();
+	//void FuseCheck();
 };

@@ -11,6 +11,7 @@ ActionSIM_MODE::~ActionSIM_MODE(void)
 
 void ActionSIM_MODE::Execute()
 {
+
 	UI* pUI = pManager->GetUI(); 
 	if (pManager->circuitValidation())
 	{

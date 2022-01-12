@@ -14,7 +14,7 @@ private:
 
 	int Cx, Cy; //coordinates of the clicked point
 	Component* Cmpnt = nullptr;
-	//Connection* Cnctn = nullptr;
+	Connection* Cnctn = nullptr;
 
 	UI* pUI;  //Pointer to the user Interfaces
 
@@ -25,7 +25,7 @@ private:
 	Connection** ConnList;
 
 public:
-	void calculateVoltage(Component* Cptr);
+	template <typename T> void calculateVoltage(T* Cptr);
 	void calculateCurrent();
 	double getVoltage() const;
 	ActionVoltmeter(ApplicationManager* pApp);

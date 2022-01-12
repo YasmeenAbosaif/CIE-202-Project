@@ -127,7 +127,10 @@ void Connection::setNewComponent(int n, Component* comp)
 		break;
 	}
 }
-
+string Connection::getType() const
+{
+	return "Connection";
+}
 //==========================================================================================================
 Connection::~Connection()
 {

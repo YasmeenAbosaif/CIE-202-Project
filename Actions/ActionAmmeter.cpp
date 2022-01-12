@@ -50,7 +50,19 @@ void ActionAmmeter::selectComponent(int x, int y)
 	}
 	pManager->UpdateInterface();
 }
-
+/*
+void ActionAmmeter::selectConnection(int x, int y)
+{
+	ActionSelect* pSELECT = new ActionSelect(pManager, x, y);
+	if (pSELECT)
+	{
+		pSELECT->Execute();
+		delete pSELECT;
+		pSELECT = nullptr;
+	}
+	pManager->UpdateInterface();
+}
+*/
 void ActionAmmeter::Execute()
 {
 	calculateCurrent();
@@ -59,7 +71,6 @@ void ActionAmmeter::Execute()
 	{
 		pUI->GetPointClicked(Cx, Cy);
 		selectComponent(Cx, Cy);
-
 		pUI->ClearStatusBar();
 
 		for (int i = 0; i < CompCount; i++)
@@ -67,11 +78,16 @@ void ActionAmmeter::Execute()
 			if (CompList[i]->isInRegion(Cx, Cy, pUI))
 				Cmpnt = CompList[i];
 		}
-		if (Cmpnt == nullptr)
+		for (int i = 0; i < ConnCount; i++)
+		{
+			if (ConnList[i]->isInRegion(Cx, Cy, pUI))
+				Cnctn = ConnList[i];
+		}
+		if (Cmpnt == nullptr && Cnctn==nullptr)
 			pUI->PrintMsg("No item selected!");
 
 
-	} while (Cmpnt == nullptr);
+	} while (Cmpnt == nullptr && Cnctn == nullptr);
 
 	pUI->PrintMsg("The current across the item is: " + to_string(total_current));
 

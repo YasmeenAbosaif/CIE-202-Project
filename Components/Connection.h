@@ -45,7 +45,7 @@ public:
 	void Connection::setNewComponent(int n, Component* comp);
 //========================================================================================================
 
-
+	string Connection::getType() const;
 //Destructor
 	
 	~Connection();

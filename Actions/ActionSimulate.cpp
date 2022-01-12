@@ -3,6 +3,8 @@
 #include "..\ApplicationManager.h"
 #include "..\Components\Bulb.h"
 #include "..\Components\Switch.h"
+#include "..\Components\Fuse.h"
+
 ActionSimulate::ActionSimulate(ApplicationManager* pApp) :Action(pApp)
 {
 	pUI = pApp->GetUI();
@@ -51,7 +53,20 @@ void ActionSimulate::BulbCheck()
 		}
 	}
 }
-
+/*
+void ActionSimulate::FuseCheck()
+{
+	for (int i = 0; i < CompCount; i++)
+	{
+		if ((CompList[i]->getType()) == "Fuse")
+		{
+			Fuse* Fptr = dynamic_cast<Fuse*>(CompList[i]);
+			if ()
+		}
+		
+	}
+}
+*/
 void ActionSimulate::Execute()
 {
 
@@ -60,7 +75,7 @@ void ActionSimulate::Execute()
 
 	//Print Action Message
 	pUI->PrintMsg("Simulating:");
-
+	//FuseCheck();
 	BulbCheck();
 
 

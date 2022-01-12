@@ -11,7 +11,7 @@ private:
 
 	int Cx, Cy; //coordinates of the clicked point
 	Component* Cmpnt = nullptr;
-	//Connection* Cnctn = nullptr;
+	Connection* Cnctn = nullptr;
 
 	UI* pUI;  //Pointer to the user Interfaces
 

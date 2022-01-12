@@ -29,15 +29,17 @@ Component* ActionSelect::Select_Component(int x, int y)
 		{
 			if (CompList[i]->isInRegion(x, y, pUI))
 			{
-				CompList[i]->setSelected(true);
 				Switch* Switchptr = dynamic_cast<Switch*>(CompList[i]);
-				if (Switchptr != nullptr)
+				if (Switchptr != nullptr && CompList[i]->getSelected())
 				{
 					if (Switchptr->getOpen())
 						Switchptr->setOpen(false);
 					else
 						Switchptr->setOpen(true);
 				}
+
+				CompList[i]->setSelected(true);
+				
 				CompList[i]->Draw(pUI);
 				return CompList[i];
 			}

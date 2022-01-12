@@ -4,7 +4,9 @@
 class Fuse :public Component
 {
 	string name;
+	
 public:
+	double maximumcurrent = 10;
 	string type = "Fuse";
 	string getType() const;
 	Fuse(GraphicsInfo* f_GfxInfo);
