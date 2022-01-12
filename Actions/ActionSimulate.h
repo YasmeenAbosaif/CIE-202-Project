@@ -1,5 +1,7 @@
-/*#pragma once
+#pragma once
 #include "action.h"
+#include"..\Components\Component.h"
+#include "../Components/Connection.h"
 
 class ActionSimulate : public Action
 {
@@ -27,4 +29,3 @@ public:
 	virtual ~ActionSimulate(void);
 	void BulbCheck();
 };
-*/

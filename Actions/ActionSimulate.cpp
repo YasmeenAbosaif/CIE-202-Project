@@ -1,4 +1,4 @@
-/*
+
 #include "ActionSimulate.h"
 #include "..\ApplicationManager.h"
 #include "..\Components\Bulb.h"
@@ -20,15 +20,33 @@ ActionSimulate::~ActionSimulate(void)
 
 void ActionSimulate::BulbCheck()
 {
-	for (int i = 0; i < CompCount; i++)
+	bool op = 0;
+	bool allclosed=1;
+	
+	while (allclosed)
 	{
-		if ((CompList[i]->getType()) == "Switch")
+		for (int i = 0; i < CompCount; i++)
 		{
-			Switch* Sptr = dynamic_cast<Switch*>(CompList[i]);
-			bool op= Sptr->getOpen();
+			if ((CompList[i]->getType()) == "Switch")
+			{
+				Switch* Sptr = dynamic_cast<Switch*>(CompList[i]);
+				if (Sptr)	  op = Sptr->getOpen();
+				if (Sptr)     allclosed = 0;
+			}
 		}
 	}
 
+	if (allclosed)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+			if ((CompList[i]->getType()) == "Bulb")
+			{
+				Bulb* Bptr = dynamic_cast<Bulb*>(CompList[i]);
+				if (Bptr) { Bptr->setOn(1); }
+			}
+		}
+	}
 }
 
 void ActionSimulate::Execute()
@@ -50,5 +68,3 @@ void ActionSimulate::Undo()
 
 void ActionSimulate::Redo()
 {}
-
-*/

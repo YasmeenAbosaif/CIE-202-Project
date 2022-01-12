@@ -13,7 +13,7 @@ Buzzer::Buzzer(const Buzzer* CopiedBuzzer)   //The copy constructor
 void Buzzer::Draw(UI* pUI)
 {
 	//Call output class and pass buzzer drawing info to it.
-	pUI->DrawBuzzer(*m_pGfxInfo); //update to draw buzzer
+	pUI->DrawBuzzer(*m_pGfxInfo, selected); //update to draw buzzer
 	int x = m_pGfxInfo->PointsList[0].x;
 	int y = m_pGfxInfo->PointsList[0].y;
 	pUI->Label_name(get_Label(), x, y);

@@ -302,18 +302,16 @@ void UI::DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected,bool on) const
 	if (selected)
 	{
 		if (on)                                                      ////Modify
-			BulbImage = "Images\\Comp\\Bulb_HI.jpg";
+			BulbImage = "Images\\Comp\\BulbOn_HI.jpg";
 		else
-			BulbImage = "Images\\Comp\\Bulb_HI.jpg";
+			BulbImage = "Images\\Comp\\BulbOFF_HI.jpg";
 	}
 	else
-		BulbImage = "Images\\Comp\\Bulb.jpg"; 
-	pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-	{
+	{ 
 		if (on)
-			BulbImage = "Images\\Comp\\Bulb.jpg";
+			BulbImage = "Images\\Comp\\BulbON.jpg";
 		else
-			BulbImage = "Images\\Comp\\Bulb.jpg";
+			BulbImage = "Images\\Comp\\BulbOFF.jpg";
 	}
 		pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
@@ -324,16 +322,16 @@ void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected, bool open) con
 	if (selected)
 	{
 		if (open)
-			SwitchImage = "Images\\Comp\\Switch_HIon.jpg";
+			SwitchImage = "Images\\Comp\\SwitchOpen_HI.jpg";
 		else 
-			SwitchImage = "Images\\Comp\\Switch_HIoff.jpg";
+			SwitchImage = "Images\\Comp\\SwitchClosed_HI.jpg";
 	}
 	else
 	{
 		if(open)
-			SwitchImage = "Images\\Comp\\Switch_on.jpg";
+			SwitchImage = "Images\\Comp\\SwitchOpen.jpg";
 		else 
-			SwitchImage = "Images\\Comp\\Switch_off.jpg";
+			SwitchImage = "Images\\Comp\\SwitchClosed.jpg";
 	}
 	pWind->DrawImage(SwitchImage, s_GfxInfo.PointsList[0].x, s_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }

@@ -7,7 +7,8 @@
 		bool on = 0;
 
 public:
-	bool getOn();
+	bool getOn() const;
+	void setOn(bool isOn);
 	string getType() const;
 	string type = "Bulb";
 	Bulb(GraphicsInfo* r_GfxInfo);

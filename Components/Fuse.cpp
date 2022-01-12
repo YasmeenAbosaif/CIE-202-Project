@@ -13,7 +13,7 @@ Fuse::Fuse(const Fuse* CopiedFuse)   //The copy constructor
 void Fuse::Draw(UI* pUI)
 {
 	//Call output class and pass battery drawing info to it.
-	pUI->DrawFuse(*m_pGfxInfo); //update to draw battery
+	pUI->DrawFuse(*m_pGfxInfo, selected); //update to draw battery
 	int x = m_pGfxInfo->PointsList[0].x;
 	int y = m_pGfxInfo->PointsList[0].y;
 	pUI->Label_name(get_Label(), x, y);

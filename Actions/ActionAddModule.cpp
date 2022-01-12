@@ -1,7 +1,7 @@
-#include "ActionAddModule.h"
+/*#include "ActionAddModule.h"
 #include "..\ApplicationManager.h"
 
-/*#include "ActionAddModule.h"
+#include "ActionAddModule.h"
 
 
 ActionAddModule::ActionAddModule(ApplicationManager* pApp) :Action(pApp)

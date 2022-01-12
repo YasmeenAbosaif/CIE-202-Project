@@ -27,7 +27,7 @@ Battery::Battery( const Battery* CopiedBattery)   //The copy constructor
 void Battery::Draw(UI* pUI)
 {
 	//Call output class and pass battery drawing info to it.
-	pUI->DrawBattery(*m_pGfxInfo); //update to draw battery
+	pUI->DrawBattery(*m_pGfxInfo,selected); //update to draw battery
 	int x = m_pGfxInfo->PointsList[0].x;
 	int y = m_pGfxInfo->PointsList[0].y;
 	name = get_Label();

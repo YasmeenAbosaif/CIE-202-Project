@@ -15,7 +15,7 @@ Resistor::Resistor(const Resistor* CopiedResistor ) //The copy constructor
 void Resistor::Draw(UI* pUI)
 {
 	//Call output class and pass resistor drawing info to it.
-	pUI->DrawResistor(*m_pGfxInfo); //update to draw resistor
+	pUI->DrawResistor(*m_pGfxInfo, selected); //update to draw resistor
 	int x = m_pGfxInfo->PointsList[0].x;
 	int y = m_pGfxInfo->PointsList[0].y;
 	pUI->Label_name(get_Label(), x, y);

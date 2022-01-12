@@ -13,7 +13,7 @@ Ground::Ground(const Ground* CopiedGround)
 void Ground::Draw(UI* pUI)
 {
 	//Call output class and pass ground drawing info to it.
-	pUI->DrawGround(*m_pGfxInfo); //update to draw ground
+	pUI->DrawGround(*m_pGfxInfo, selected); //update to draw ground
 	int x = m_pGfxInfo->PointsList[0].x;
 	int y = m_pGfxInfo->PointsList[0].y;
 	pUI->Label_name(get_Label(), x, y);
