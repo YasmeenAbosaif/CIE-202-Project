@@ -3,9 +3,9 @@
 
 class ActionPaste : public Action
 {
-//private:
-//	//Coordinates to get the copied component position
-//	int Cx, Cy;	//Center point of the comp 
+private:
+	//Coordinates to get the copied component position
+	int Cx, Cy;	//Center point of the comp 
 public:
 	ActionPaste(ApplicationManager*pApp);
 	virtual  ~ActionPaste(void);

@@ -112,7 +112,7 @@ ActionType UI::GetUserAction() const
 			}
 		}
 		//[2] If user clicks on the OptionsMenu
-		else if (x >= 639 && x <= 719)
+		else if (x >= 719 && x <= 799)
 		{
 			int ChoosenItemOrder = ( (y - ToolBarHeight) / ToolItemheight);
 			switch (ChoosenItemOrder)
@@ -121,8 +121,11 @@ ActionType UI::GetUserAction() const
 			case ITM_Edit: return EDIT_Label;
 			case ITM_Copy: return COPY;
 			case ITM_Paste: return PASTE;
+			case ITM_Cut: return CUT;
 			case ITM_Delete: return DEL;
 			case ITM_SAVE: return SAVE;
+			case ITM_Move: return MOVE;
+			case ITM_Close: return ClOSE;
 			default: return OPTIONS_TOOL;	//A click on empty place in Options toolbar
 			}
 		}
@@ -252,16 +255,19 @@ void UI::create_options_menu()
 	MenuOptionsItems[ITM_Edit] = "images\\Menu\\Menu_Edit.jpg";
 	MenuOptionsItems[ITM_Copy] = "images\\Menu\\Menu_Copy.jpg";
 	MenuOptionsItems[ITM_Paste] = "images\\Menu\\Menu_Paste.jpg";
+	MenuOptionsItems[ITM_Cut] = "images\\Menu\\Menu_Cut.jpg";
 	MenuOptionsItems[ITM_Delete] = "images\\Menu\\Menu_Delete.jpg";
+	MenuOptionsItems[ITM_Move] = "images\\Menu\\Menu_Move.jpg";
 	MenuOptionsItems[ITM_SAVE] = "images\\Menu\\Menu_Save.jpg";
+	MenuOptionsItems[ITM_Close] = "images\\Menu\\Menu_Close.jpg";
 	for (int i = 0; i < OptionsCount; i++)
 	{
-		pWind->DrawImage(MenuOptionsItems[i], 639, 80 + i * ToolItemheight, ToolItemWidth, ToolItemheight);
+		pWind->DrawImage(MenuOptionsItems[i], 719, 80 + i * ToolItemheight, ToolItemWidth, ToolItemheight);
 		pWind->SetPen(BLUE, 3);
-		pWind->DrawLine(639, 80 + ToolItemheight * (i + 1), 639 , 80 + ToolItemheight * (i + 1));
-		pWind->DrawLine(639, 80 + ToolItemheight * (i + 1), 639+80 , 80 + ToolItemheight * (i + 1));
-		pWind->DrawLine(639, 80, 639, 80 + ToolItemheight * (i + 1));
-		pWind->DrawLine(639 + 80 , 80 , 639 + 80 , 80 + ToolItemheight * (i + 1));
+		pWind->DrawLine(719, 80 + ToolItemheight * (i + 1), 719, 80 + ToolItemheight * (i + 1));
+		pWind->DrawLine(719, 80 + ToolItemheight * (i + 1), 719 + 80, 80 + ToolItemheight * (i + 1));
+		pWind->DrawLine(719, 80, 719, 80 + ToolItemheight * (i + 1));
+		pWind->DrawLine(719 + 80, 80, 719 + 80, 80 + ToolItemheight * (i + 1));
 	}
 }
 
@@ -296,7 +302,7 @@ void UI::DrawBattery(const GraphicsInfo& b_GfxInfo, bool selected) const
 }
 
 
-void UI::DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected,bool on) const
+void UI::DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected, bool on) const
 {
 	string BulbImage;
 	if (selected)
@@ -307,13 +313,13 @@ void UI::DrawBulb(const GraphicsInfo& b_GfxInfo, bool selected,bool on) const
 			BulbImage = "Images\\Comp\\BulbOFF_HI.jpg";
 	}
 	else
-	{ 
+	{
 		if (on)
 			BulbImage = "Images\\Comp\\BulbON.jpg";
 		else
 			BulbImage = "Images\\Comp\\BulbOFF.jpg";
 	}
-		pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+	pWind->DrawImage(BulbImage, b_GfxInfo.PointsList[0].x, b_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
 void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected, bool open) const
@@ -323,14 +329,14 @@ void UI::DrawSwitch(const GraphicsInfo& s_GfxInfo, bool selected, bool open) con
 	{
 		if (open)
 			SwitchImage = "Images\\Comp\\SwitchOpen_HI.jpg";
-		else 
+		else
 			SwitchImage = "Images\\Comp\\SwitchClosed_HI.jpg";
 	}
 	else
 	{
-		if(open)
+		if (open)
 			SwitchImage = "Images\\Comp\\SwitchOpen.jpg";
-		else 
+		else
 			SwitchImage = "Images\\Comp\\SwitchClosed.jpg";
 	}
 	pWind->DrawImage(SwitchImage, s_GfxInfo.PointsList[0].x, s_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
@@ -351,11 +357,11 @@ void UI::DrawGround(const GraphicsInfo& g_GfxInfo, bool selected) const
 void UI::DrawBuzzer(const GraphicsInfo& bz_GfxInfo, bool selected) const
 {
 	string BuzImage;
-	if (selected)	
-		BuzImage = "Images\\Comp\\Buzzer_HI.jpg";	
+	if (selected)
+		BuzImage = "Images\\Comp\\Buzzer_HI.jpg";
 	else
-		BuzImage = "Images\\Comp\\Buzzer.jpg";	
-	
+		BuzImage = "Images\\Comp\\Buzzer.jpg";
+
 	pWind->DrawImage(BuzImage, bz_GfxInfo.PointsList[0].x, bz_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
@@ -364,11 +370,11 @@ void UI::DrawFuse(const GraphicsInfo& f_GfxInfo, bool selected) const
 {
 	string FuseImage;
 	if (selected)
-		FuseImage = "Images\\Comp\\Fuse_HI.jpg";	
+		FuseImage = "Images\\Comp\\Fuse_HI.jpg";
 	else
-		FuseImage = "Images\\Comp\\Fuse.jpg";	
+		FuseImage = "Images\\Comp\\Fuse.jpg";
 
-	
+
 	pWind->DrawImage(FuseImage, f_GfxInfo.PointsList[0].x, f_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
@@ -441,6 +447,58 @@ void UI::DesignModeSwitch()
 	this->Clear_Tool_Bar();
 	AppMode = DESIGN;
 	CreateDesignToolBar();	//Create the desgin toolbar
+}
+
+//============================================Draging=====================================================
+void UI::MouseState_Move(int	CX, int CY)
+{
+	// Flush out the input queues before beginning
+	pWind->FlushMouseQueue();
+	pWind->FlushKeyQueue();
+
+	pWind->SetBuffering(true);
+
+	int RectULX = CX;
+	int RectULY = CY;
+	bool bDragging = false;
+
+	int iX = 0;  int iY = 0;
+
+	int iXOld = 0;
+	int iYOld = 0;
+
+	char cKeyData;
+	// Loop until there escape is pressed
+	while (pWind->GetKeyPress(cKeyData) != ESCAPE)
+	{
+		//testWindow.DrawRectangle(0, 0, testWindow.GetWidth() - 1, testWindow.GetHeight() - 1);
+
+		if (bDragging == false) {
+			if (pWind->GetButtonState(LEFT_BUTTON, iX, iY) == BUTTON_DOWN) {
+				if (((iX > RectULX) && (iX < (RectULX + 80))) && ((iY > RectULY) && (iY < (RectULY + 80)))) {
+					bDragging = true;
+					iXOld = iX; iYOld = iY;
+				}
+			}
+		}
+		else {
+			if (pWind->GetButtonState(LEFT_BUTTON, iX, iY) == BUTTON_UP) {
+				bDragging = false;
+			}
+			else {
+				if (iX != iXOld) {
+					RectULX = RectULX + (iX - iXOld);
+					iXOld = iX;
+				}
+				if (iY != iYOld) {
+					RectULY = RectULY + (iY - iYOld);
+					iYOld = iY;
+				}
+			}
+		}
+		pWind->UpdateBuffer();
+	}
+	pWind->SetBuffering(false);
 }
 
 UI::~UI()

@@ -79,14 +79,11 @@ public:
 	Component* Select_Component(int x, int y);
 	void update_comp_connlist();
 //========================================= Copy ,  Paste , Cut ============================================
-	/*void setCopyCopmonent(Component* copiedcomp);
-	Component* getCopyCopmonent();*/
+	void setCopyCopmonent(Component* copiedcomp);
 
-	void Paste_Component(GraphicsInfo* r_GfxInfo);
+	Component* getCopyCopmonent();
 
-	void Copy_Component(Component* copiedcomp);
-
-	void Cut_Component(Component* copiedcomp, GraphicsInfo* r_GfxInfo);
+	void Copy_Cut_Component(Component* copiedcomp);
 
 //====================================================Save==================================================
 public: void Save();

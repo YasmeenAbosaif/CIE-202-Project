@@ -5,9 +5,10 @@
 Fuse::Fuse(GraphicsInfo* f_GfxInfo) :Component(f_GfxInfo)
 {}
 
-Fuse::Fuse(const Fuse* CopiedFuse)   //The copy constructor
+Fuse::Fuse(const Fuse& CopiedFuse)   //The copy constructor
 {
-	this->name = CopiedFuse->name;
+	this->m_pGfxInfo = new GraphicsInfo(2);
+	this->set_label(CopiedFuse.get_Label());
 }
 
 void Fuse::Draw(UI* pUI)

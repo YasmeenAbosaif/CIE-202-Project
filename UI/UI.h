@@ -45,8 +45,8 @@ class UI
 		ITM_WIRE,       //Wire item in menu
 		ITM_BUZZER,
 		ITM_FUSE,
-		ITM_Options,
 		ITM_SIM_Switch,
+		ITM_Options,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
 
@@ -60,8 +60,11 @@ class UI
 		ITM_Edit,   // Edit item
 		ITM_Copy,
 		ITM_Paste,
+		ITM_Cut,
 		ITM_Delete,
+		ITM_Move,
 		ITM_SAVE,
+		ITM_Close,
 		OptionsCount   //no. of options menu items ==> This should be the last line in this enum
 	};
 
@@ -155,6 +158,10 @@ public:
 
 	//======================================Drop Menu for options==================================
 	void create_options_menu();
+
+	//===================================== Draging function ========================================
+	void  MouseState_Move(int CX, int CY);
+
 	~UI();
 };
 #endif

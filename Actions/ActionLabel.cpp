@@ -35,7 +35,7 @@ void ActionLabel::Execute()
 		component_->set_label(name);
 		component_->get_Label();
 		pUI->ClearStatusBar();
-		pUI->Label_name(name,Cx,Cy);
+		pUI->Label_name(name, Cx, Cy);
 	}
 	else if (connection_ != nullptr)
 	{
@@ -48,9 +48,10 @@ void ActionLabel::Execute()
 	}
 	else
 	{
-		pUI->PrintMsg(" Neither Component nor connection is selected ");
+		pUI->PrintMsg(" You Choose nothing and action will be cancelled \n Try again !");
 	}
 	pUI->ClearDrawingArea();
+	pManager->UpdateInterface();
 }
 
 void ActionLabel::Undo()

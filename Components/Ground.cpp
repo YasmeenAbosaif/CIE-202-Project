@@ -5,9 +5,10 @@
 Ground::Ground(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 {}
 
-Ground::Ground(const Ground* CopiedGround)
+Ground::Ground(const Ground& CopiedGround)
 {
-	this->name = CopiedGround->name;
+	this->m_pGfxInfo = new GraphicsInfo(2);
+	this->set_label(CopiedGround.get_Label());
 }
 
 void Ground::Draw(UI* pUI)

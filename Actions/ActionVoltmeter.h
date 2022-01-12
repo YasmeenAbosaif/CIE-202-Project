@@ -9,7 +9,7 @@ class ActionVoltmeter : public Action
 private:
 	//double emf = 0;
 	//double Rtotal = 0;
-	double voltage = 10;
+	double voltage = 0;
 	double total_current = 0;
 
 	int Cx, Cy; //coordinates of the clicked point
@@ -25,7 +25,7 @@ private:
 	Connection** ConnList;
 
 public:
-	void calculateVoltage();
+	void calculateVoltage(Component* Cptr);
 	void calculateCurrent();
 	double getVoltage() const;
 	ActionVoltmeter(ApplicationManager* pApp);

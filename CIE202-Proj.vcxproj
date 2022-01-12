@@ -119,6 +119,7 @@
     <ClCompile Include="Actions\ActionAddRes.cpp" />
     <ClCompile Include="Actions\ActionAddSwitch.cpp" />
     <ClCompile Include="Actions\ActionAmmeter.cpp" />
+    <ClCompile Include="Actions\ActionClose.cpp" />
     <ClCompile Include="Actions\ActionConnect.cpp" />
     <ClCompile Include="Actions\ActionCopy.cpp" />
     <ClCompile Include="Actions\ActionCut.cpp" />
@@ -126,6 +127,7 @@
     <ClCompile Include="Actions\ActionDesignModeSwitch.cpp" />
     <ClCompile Include="Actions\ActionEDIT.cpp" />
     <ClCompile Include="Actions\ActionLabel.cpp" />
+    <ClCompile Include="Actions\ActionMove.cpp" />
     <ClCompile Include="Actions\ActionOptions.cpp" />
     <ClCompile Include="Actions\ActionPaste.cpp" />
     <ClCompile Include="Actions\ActionSave.cpp" />
@@ -192,6 +194,7 @@
     <ClInclude Include="Actions\ActionAddRes.h" />
     <ClInclude Include="Actions\ActionAddSwitch.h" />
     <ClInclude Include="Actions\ActionAmmeter.h" />
+    <ClInclude Include="Actions\ActionClose.h" />
     <ClInclude Include="Actions\ActionConnect.h" />
     <ClInclude Include="Actions\ActionCopy.h" />
     <ClInclude Include="Actions\ActionCut.h" />
@@ -199,6 +202,7 @@
     <ClInclude Include="Actions\ActionDesignModeSwitch.h" />
     <ClInclude Include="Actions\ActionEDIT.h" />
     <ClInclude Include="Actions\ActionLabel.h" />
+    <ClInclude Include="Actions\ActionMove.h" />
     <ClInclude Include="Actions\ActionOptions.h" />
     <ClInclude Include="Actions\ActionPaste.h" />
     <ClInclude Include="Actions\ActionSave.h" />

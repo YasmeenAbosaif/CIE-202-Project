@@ -5,15 +5,16 @@
 Bulb::Bulb(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 {}
 
-Bulb::Bulb(const Bulb* CopiedBulb)   //The copy constructor
+Bulb::Bulb(const Bulb& CopiedBulb)   //The copy constructor
 {
-	this->setValue(CopiedBulb->getVal());
-	this->name = CopiedBulb->name;
+	this->m_pGfxInfo = new GraphicsInfo(2);
+	this->setValue(CopiedBulb.getVal());
+	this->set_label(CopiedBulb.get_Label());
 }
 void Bulb::Draw(UI* pUI)
 {
 	//Call output class and pass resistor drawing info to it.
-	pUI->DrawBulb(*m_pGfxInfo, selected, 1); //update to draw resistor
+	pUI->DrawBulb(*m_pGfxInfo, selected, on); //update to draw resistor
 	int x = m_pGfxInfo->PointsList[0].x;
 	int y = m_pGfxInfo->PointsList[0].y;
 	pUI->Label_name(get_Label(), x, y);
@@ -35,7 +36,8 @@ string Bulb::getType() const
 {
 	return type;
 }
-bool Bulb:: getOn() const
+
+bool Bulb::getOn() const
 {
 	return on;
 }

@@ -5,21 +5,23 @@
 #include "Actions\ActionAddBulb.h"
 #include "Actions\ActionAddSwitch.h"
 #include "Actions\ActionAddBuzzer.h"
-#include "Actions\ActionAddFuse.h"
-#include "Actions\ActionSave.h"
-#include "Actions\ActionLabel.h"
-#include "Actions\ActionSIM_MODE.h"
-#include "Actions\ActionEDIT.h"
-#include "Actions\ActionDesignModeSwitch.h"
-#include "Actions\ActionSelect.h"
-#include "Actions\ActionConnect.h"
-#include "Actions\ActionDelete.h"
+#include"Actions\ActionAddFuse.h"
+#include"Actions\ActionSave.h"
+#include"Actions\ActionLabel.h"
+#include"Actions\ActionSIM_MODE.h"
+#include"Actions\ActionEDIT.h"
+#include"Actions\ActionDesignModeSwitch.h"
+#include"Actions\ActionSelect.h"
+#include"Actions\ActionConnect.h"
+#include"Actions\ActionDelete.h"
 #include"Actions/ActionOptions.h"
 #include"Actions/ActionCopy.h"
 #include"Actions/ActionCut.h"
 #include"Actions/ActionPaste.h"
-#include"Actions/ActionAmmeter.h"
+#include"Actions/ActionMove.h"
 #include"Actions/ActionVoltmeter.h"
+#include"Actions/ActionAmmeter.h"
+#include"Actions/ActionClose.h"
 #include <fstream>
 
 ApplicationManager::ApplicationManager()
@@ -95,7 +97,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SIM_MODE:
 			pAct = new ActionSIM_MODE(this);
 			break;
-
 		case AMMETER_:
 			pAct = new ActionAmmeter(this);
 				break;
@@ -119,6 +120,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case CUT:
 			pAct = new ActionCut(this);
+			break;
+		case MOVE:
+			pAct = new ActionMove(this);
+			break;
+		case ClOSE:
+			pAct = new ActionClose(this);
 			break;
 		case EXIT:
 			///TODO: create ExitAction here
@@ -323,8 +330,9 @@ void ApplicationManager::update_comp_connlist()
 	newnum = 0;
 }
 
-// Function for Copy the component 
-void ApplicationManager::Copy_Component(Component* copiedcomp )
+
+// Function for Copy & Cut the component 
+void ApplicationManager::Copy_Cut_Component(Component* copiedcomp)
 {
 	if (copiedcomp != nullptr)
 	{
@@ -341,37 +349,37 @@ void ApplicationManager::Copy_Component(Component* copiedcomp )
 			{
 				if (copiedBattery != nullptr)
 				{
-					Battery* NewCopiedComponent = new Battery (copiedBattery ); //Should be constructor
+					Battery* NewCopiedComponent = new Battery(*copiedBattery);
 					copycomponent = NewCopiedComponent;
 				}
 				else if (copiedResistor != nullptr)
 				{
-					Resistor* NewCopiedComponent = new Resistor(copiedResistor ); //Should be constructor
+					Resistor* NewCopiedComponent = new Resistor(*copiedResistor);
 					copycomponent = NewCopiedComponent;
 				}
 				else if (copiedBulb != nullptr)
 				{
-					Bulb* NewCopiedComponent = new Bulb(copiedBulb ); //Should be constructor
+					Bulb* NewCopiedComponent = new Bulb(*copiedBulb);
 					copycomponent = NewCopiedComponent;
 				}
 				else if (copiedBuzzer != nullptr)
 				{
-					Buzzer* NewCopiedComponent = new Buzzer(copiedBuzzer ); //Should be constructor
+					Buzzer* NewCopiedComponent = new Buzzer(*copiedBuzzer);
 					copycomponent = NewCopiedComponent;
 				}
 				else if (copiedFuse != nullptr)
 				{
-					Fuse* NewCopiedComponent = new Fuse(copiedFuse ); //Should be constructor
+					Fuse* NewCopiedComponent = new Fuse(*copiedFuse);
 					copycomponent = NewCopiedComponent;
 				}
 				else if (copiedGround != nullptr)
 				{
-					Ground* NewCopiedComponent = new Ground(copiedGround ); //Should be constructor
+					Ground* NewCopiedComponent = new Ground(*copiedGround);
 					copycomponent = NewCopiedComponent;
 				}
 				else if (copiedSwitch != nullptr)
 				{
-					Switch* NewCopiedComponent = new Switch(copiedSwitch); //Should be constructor
+					Switch* NewCopiedComponent = new Switch(*copiedSwitch);
 					copycomponent = NewCopiedComponent;
 				}
 			}
@@ -379,66 +387,19 @@ void ApplicationManager::Copy_Component(Component* copiedcomp )
 	}
 }
 
-// Function for Copy the component 
-void ApplicationManager::Cut_Component(Component* copiedcomp , GraphicsInfo* r_GfxInfo)
+//=============================== For saving the copy to be pasted =========================================
+
+void ApplicationManager::setCopyCopmonent(Component* selectedcopy)
 {
-	if (copiedcomp != nullptr)
-	{
-		Battery* copiedBattery = dynamic_cast <Battery*> (copiedcomp);
-		Resistor* copiedResistor = dynamic_cast <Resistor*> (copiedcomp);
-		Bulb* copiedBulb = dynamic_cast <Bulb*> (copiedcomp);
-		Buzzer* copiedBuzzer = dynamic_cast <Buzzer*> (copiedcomp);
-		Fuse* copiedFuse = dynamic_cast <Fuse*> (copiedcomp);
-		Ground* copiedGround = dynamic_cast <Ground*> (copiedcomp);
-		Switch* copiedSwitch = dynamic_cast <Switch*> (copiedcomp);
-		Switch* NewCopiedComponent = new Switch(copiedSwitch);
-		for (int i = 0; i < CompCount; i++)
-		{
-			if (CompList[i] == copiedcomp)
-			{
-				Battery* NewCopiedBattery = new Battery(copiedBattery);
-				Resistor* NewCopiedResistor = new Resistor(copiedResistor);
-				Bulb* NewCopiedBulb = new Bulb(copiedBulb);
-				Fuse* NewCopiedFuse = new Fuse(copiedFuse);
-				Buzzer* NewCopiedBuzzer = new Buzzer(copiedBuzzer);
-				Ground* NewCopiedGround = new Ground(copiedGround);
-				Switch* NewCopiedSwitch = new Switch(copiedSwitch);
-
-				if (copiedBattery != nullptr)
-				{
-					copycomponent = NewCopiedBattery;
-				}
-				else if (copiedResistor != nullptr)
-				{
-					copycomponent = NewCopiedResistor;
-				}
-				else if (copiedBulb != nullptr)
-				{
-					copycomponent = NewCopiedBulb;
-				}
-				else if (copiedBuzzer != nullptr)
-				{
-					copycomponent = NewCopiedBuzzer;
-				}
-				else if (copiedFuse != nullptr)
-				{
-					copycomponent = NewCopiedFuse;
-				}
-				else if (copiedGround != nullptr)
-				{
-					copycomponent = NewCopiedGround;
-				}
-				else if (copiedSwitch != nullptr)
-				{
-					copycomponent = NewCopiedSwitch;
-				}
-				DeleteComponent(CompList[i]);
-				update_comp_connlist();
-			}
-		}
-	}
+	copycomponent = selectedcopy;
 }
 
+Component* ApplicationManager::getCopyCopmonent()
+{
+	return copycomponent;
+}
+
+//=========================================================================================================//
 bool ApplicationManager::circuitValidation()
 {
 	pUI = GetUI();
@@ -543,23 +504,5 @@ bool ApplicationManager::circuitValidation()
 	}
 }
 
-// Function for Paste copy
-
-void ApplicationManager :: Paste_Component(GraphicsInfo* r_GfxInfo)
-{
-	AddComponent(copycomponent);
-}
-
-//==========================================================================================================
-
-//void ApplicationManager::setCopyCopmonent(Component* selectedcopy)
-//{
-//	copycomponent = selectedcopy;
-//}
-//
-//Component* ApplicationManager::getCopyCopmonent()
-//{
-//	return copycomponent;
-//}
 
 

@@ -12,9 +12,11 @@ ActionAmmeter::ActionAmmeter(ApplicationManager* pApp) : Action(pApp)
 	CompList = pApp->GetCompList();
 	ConnList = pApp->GetConnList();
 }
-
+ 
 void ActionAmmeter::calculateCurrent()
 {
+	//NOTE: The Batteries were to be entered in only one direction, thus this is considered to be valid.
+	//		Batteries were considered to be ideal (NO internal resistance).
 
 	double emf=0;
 	double Rtotal=0;

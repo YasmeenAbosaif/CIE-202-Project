@@ -5,9 +5,11 @@
 Buzzer::Buzzer(GraphicsInfo* b_GfxInfo) :Component(b_GfxInfo)
 {}
 
-Buzzer::Buzzer(const Buzzer* CopiedBuzzer)   //The copy constructor
+Buzzer::Buzzer(const Buzzer& CopiedBuzzer)   //The copy constructor
 {
-	this->name = CopiedBuzzer->name;
+	this->m_pGfxInfo = new GraphicsInfo(2);
+	this->setValue(CopiedBuzzer.getVal());
+	this->set_label(CopiedBuzzer.get_Label());
 }
 
 void Buzzer::Draw(UI* pUI)

@@ -5,9 +5,9 @@
 Switch::Switch(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 {}
 
-Switch::Switch(const Switch* CopiedSwitch)   //The copy constructor
+Switch::Switch(const Switch& CopiedSwitch)   //The copy constructor
 {
-	this->name = CopiedSwitch->name;
+	this->set_label(CopiedSwitch.get_Label());
 }
 
 void Switch::Draw(UI* pUI)
@@ -38,7 +38,7 @@ bool Switch::getOpen() const
 	return open;
 }
 
-void Switch:: setOpen(bool isOpen)
+void Switch::setOpen(bool isOpen)
 {
 	open = isOpen;
 }

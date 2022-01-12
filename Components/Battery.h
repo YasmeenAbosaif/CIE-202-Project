@@ -11,10 +11,9 @@ public:
 	string getType() const;
 	const string type = "Battery";
 	Battery(GraphicsInfo* r_GfxInfo);   //Contructor
-	Battery(const Battery* CopiedBattery);  //const to avoid changing , "&" to avoid memory leakage 
+	Battery(const Battery& CopiedBattery);  //const to avoid changing , "&" to avoid memory leakage 
 	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the battery
 	virtual void Save(ofstream& file, int id);
-	//Component* copy(Component* copiedcomp);
 	//void setEmf(string newEmf);
 };

@@ -5,11 +5,11 @@
 Resistor::Resistor(GraphicsInfo *r_GfxInfo):Component(r_GfxInfo)
 {}
 
-Resistor::Resistor(const Resistor* CopiedResistor ) //The copy constructor
+Resistor::Resistor(const Resistor& CopiedResistor)   //The copy constructor
 {
-	this->m_pGfxInfo = new GraphicsInfo (2);
-	this->setValue(CopiedResistor->getVal());
-	this->name = CopiedResistor->name;
+	this->m_pGfxInfo = new GraphicsInfo(2);
+	this->setValue(CopiedResistor.getVal());
+	this->set_label(CopiedResistor.get_Label());
 }
 
 void Resistor::Draw(UI* pUI)

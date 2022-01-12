@@ -28,25 +28,23 @@ void ActionVoltmeter:: calculateCurrent()
 	total_current = emf / Rtotal;
 }
 
-void ActionVoltmeter::calculateVoltage()
+void ActionVoltmeter::calculateVoltage(Component* Cptr)
 	{
-	for (int i = 0; i < CompCount; i++)
-	{
-		if ((CompList[i]->getType()) == "Resistor")     voltage = (total_current * (stod(CompList[i]->getVal())));
-		else if ((CompList[i]->getType()) == "Bulb")    voltage =(total_current * (stod(CompList[i]->getVal())));
-		else if ((CompList[i]->getType()) == "Buzzer")  voltage = (total_current * (stod(CompList[i]->getVal())));
-		else if ((CompList[i]->getType()) == "Switch") 
+		if ((Cptr->getType()) == "Resistor")     voltage = (total_current * (stod(Cptr->getVal())));
+		else if ((Cptr->getType()) == "Bulb")    voltage = (total_current * (stod(Cptr->getVal())));
+		else if ((Cptr->getType()) == "Buzzer")  voltage = (total_current * (stod(Cptr->getVal())));
+		else if ((Cptr->getType()) == "Switch")
 		{
-			if (!(CompList[i]->open))
+			if (!(Cptr->open))
 				voltage = 0;
-	//		else
-		//		voltage = emf;
-		} 
-		else if ((CompList[i]->getType()) == "Battery") voltage = stod(CompList[i]->getVal()); //That's not so accurate, in case of multiple Batteries.
-		else if ((CompList[i]->getType()) == "Fuse")    voltage = 0;
+			//		else
+				//		voltage = emf;
+		}
+		else if ((Cptr->getType()) == "Battery") voltage = stod(Cptr->getVal()); //That's not so accurate, in case of multiple Batteries.
+		else if ((Cptr->getType()) == "Fuse")    voltage = 0;
 		//else if ((CompList[i]->getType()) == "Ground")  voltage = emf;
+		else voltage = 50000;
 
-	}
 }
 
 
@@ -70,7 +68,6 @@ void ActionVoltmeter::selectComponent(int x, int y)
 void ActionVoltmeter::Execute()
 {
 	calculateCurrent();
-	calculateVoltage();
 	pUI->PrintMsg("Select a component to read the voltage betweem its terminal: ");
 	do
 	{
@@ -90,6 +87,7 @@ void ActionVoltmeter::Execute()
 
 	} while (Cmpnt == nullptr);
 
+	calculateVoltage(Cmpnt);
 	pUI->PrintMsg("The voltage across the item is: " + to_string(voltage));
 
 }

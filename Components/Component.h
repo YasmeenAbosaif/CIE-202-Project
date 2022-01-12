@@ -89,7 +89,7 @@ public:
 	bool ISComponent(int x, int y) const;
 	
 	void set_label(string name);
-	string get_Label();
+	string get_Label() const ;
 
 	void DeleteConnectionComponents(Connection* pConn);
 	
@@ -105,11 +105,11 @@ public:
 	
 	Connection** get_terminal(Terminal);
 
-//=================== for copying the component ======================
-	/*void setCopyCopmonent(Component* copiedcomp);
-	Component* getCopyCopmonent();*/
+//=================== for pasting the component ======================
+	
+	void set_GraphicsnewPosition(GraphicsInfo* m_pGfxInfo);
 
-	//virtual Component* copy(Component*copiedcomp) = 0;
+	GraphicsInfo* get_GraphicsnewPosition();
 
 	Component();	
 	

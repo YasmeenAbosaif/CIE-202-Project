@@ -2,14 +2,14 @@
 #include"ActionCopy.h"
 
 //Class responsible for deleting action
-ActionCopy:: ActionCopy(ApplicationManager* pApp) : Action(pApp)
+ActionCopy::ActionCopy(ApplicationManager* pApp) : Action(pApp)
 {
 }
 ActionCopy:: ~ActionCopy(void)
 {
 }
 //Execute action (code depends on action type)
-void ActionCopy :: Execute()
+void ActionCopy::Execute()
 {
 	UI* pUI = pManager->GetUI();
 	pUI->ClearDrawingArea();
@@ -20,18 +20,21 @@ void ActionCopy :: Execute()
 	pUI->ClearStatusBar();
 	if (copycomponent != nullptr)
 	{
-		/*pManager->setCopyCopmonent(copycomponent);
-		pManager -> getCopyCopmonent();*/
-		pManager->Copy_Component(copycomponent);
+		pManager->Copy_Cut_Component(copycomponent);
+		pUI->PrintMsg("The component is copied");
 	}
 }
 
-void ActionCopy :: Undo()
+void ActionCopy::Undo()
 {
 }
 void ActionCopy::Redo()
 {
 }
+
+
+
+
 
 
 

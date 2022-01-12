@@ -92,7 +92,7 @@ void Component::set_label(string name)
 {
 	m_Label = name;
 }
-string Component::get_Label()
+string Component::get_Label() const
 {
 	return m_Label;
 }
@@ -166,16 +166,16 @@ Connection** Component :: get_terminal(Terminal Term )  //We should declare new 
 	
 }
 
-//===================================== for copying the component ==========================================
-//void Component::setCopyCopmonent(Component* selectedcopy)
-//{
-//	copycomponent = selectedcopy;
-//}
-//
-//Component* Component::getCopyCopmonent()
-//{
-//	return copycomponent;
-//}
+//===================================== for pasting the component ==========================================
+void Component::set_GraphicsnewPosition(GraphicsInfo* r_GfxInfo)
+{
+	m_pGfxInfo = r_GfxInfo;
+}
+
+GraphicsInfo* Component::get_GraphicsnewPosition()
+{
+	return m_pGfxInfo;
+}
 
 //==========================================================================================================
 
@@ -193,6 +193,7 @@ string Component::getVal() const
 {
 	return value;       //Note that its resistance for all except battery
 }
+
 
 
 Component::~Component()

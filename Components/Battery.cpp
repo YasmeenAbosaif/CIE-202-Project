@@ -6,28 +6,17 @@ Battery::Battery(GraphicsInfo* b_GfxInfo) :Component(b_GfxInfo)
 {
 }
 
-Battery::Battery( const Battery* CopiedBattery)   //The copy constructor
+Battery::Battery(const Battery& CopiedBattery)   //The copy constructor
 {
-	this->setValue(CopiedBattery->getVal());
-	this->name = CopiedBattery->name;
+	this->m_pGfxInfo = new GraphicsInfo(2);
+	this->setValue(CopiedBattery.getVal());
+	this->set_label(CopiedBattery.get_Label());
 }
-
-//Component* Battery :: copy (Component* copiedcomp)
-//{
-//	for (int i = 0; i < CompCount; i++)
-//			{
-//				if (CompList[i] == copiedcomp)
-//				{
-//					Battery* newcomp = new Battery (GraphicsInfo*b_GfxInfo);
-//					newcomp(CompList[i]);
-//				}
-//			}
-//}
 
 void Battery::Draw(UI* pUI)
 {
 	//Call output class and pass battery drawing info to it.
-	pUI->DrawBattery(*m_pGfxInfo,selected); //update to draw battery
+	pUI->DrawBattery(*m_pGfxInfo, selected); //update to draw battery
 	int x = m_pGfxInfo->PointsList[0].x;
 	int y = m_pGfxInfo->PointsList[0].y;
 	name = get_Label();
